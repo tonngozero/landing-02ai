@@ -73,6 +73,8 @@
       -moz-osx-font-smoothing: grayscale;
       background-color: var(--bg);
       color: var(--fg);
+      overflow-x: hidden;
+      max-width: 100vw;
     }
     body {
       font-family: var(--font-body);
@@ -168,12 +170,13 @@
 
     .section-title {
       font-family: var(--font-display);
-      font-size: clamp(30px, 4.2vw, 48px);
+      font-size: clamp(28px, 4vw, 46px);
       font-weight: 700;
-      line-height: 1.15;
+      line-height: 1.18;
       letter-spacing: -0.02em;
       color: var(--fg);
       margin-bottom: 18px;
+      text-wrap: balance;
     }
     .section-title em,
     .section-title .hl {
@@ -268,6 +271,9 @@
       background: rgba(0, 120, 255, 0.1);
       border: 1px solid rgba(85, 183, 255, 0.25);
       color: var(--blue-glow);
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
     }
     .pulse-dot {
       width: 7px;
@@ -286,25 +292,34 @@
        4. TOP ANNOUNCEMENT & NAVBAR
     ═════════════════════════════════════════════════════════ */
     .top-bar {
-      background: linear-gradient(90deg, #061b3a 0%, #0c2d61 50%, #061b3a 100%);
-      border-bottom: 1px solid rgba(0, 120, 255, 0.2);
+      background: linear-gradient(90deg, #05142b 0%, #09234b 50%, #05142b 100%);
+      border-bottom: 1px solid rgba(0, 120, 255, 0.22);
       text-align: center;
-      padding: 10px 16px;
+      padding: 9px 16px;
       font-size: 12.5px;
       font-weight: 600;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       color: var(--blue-glow);
       position: relative;
       z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      line-height: 1.4;
     }
     .top-bar a {
       color: #fff;
       text-decoration: underline;
-      margin-left: 8px;
+      margin-left: 6px;
       font-weight: 700;
+      transition: var(--transition);
     }
     .top-bar a:hover {
       color: var(--signal-orange);
+    }
+    .top-bar-mobile {
+      display: none;
     }
 
     .site-nav {
@@ -312,107 +327,281 @@
       top: 0;
       left: 0;
       right: 0;
-      z-index: 90;
-      background: rgba(5, 7, 12, 0.85);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      z-index: 95;
+      background: rgba(5, 7, 12, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       transition: var(--transition);
     }
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 78px;
+      height: 76px;
+      gap: clamp(10px, 1.6vw, 24px);
+      width: 100%;
+      box-sizing: border-box;
     }
     .brand-logo {
       display: flex;
       align-items: center;
-      gap: 12px;
+      flex-shrink: 0;
+      margin-right: 0;
     }
     .brand-logo-img {
-      height: 48px;
-      max-height: 48px;
+      height: 42px;
+      max-height: 42px;
       width: auto;
       object-fit: contain;
-      filter: drop-shadow(0 0 20px rgba(0, 120, 255, 0.5));
+      filter: drop-shadow(0 0 16px rgba(0, 120, 255, 0.45));
       transition: transform 0.25s ease;
     }
     .brand-logo:hover .brand-logo-img {
-      transform: scale(1.03);
+      transform: scale(1.02);
     }
 
+    /* Desktop Navigation Links: Balanced & Airy */
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: clamp(12px, 1.6vw, 24px);
+      flex-shrink: 1;
+      white-space: nowrap;
     }
     .nav-link {
-      font-size: 14.5px;
+      font-size: 14px;
       font-weight: 500;
       color: var(--fg-muted);
       position: relative;
+      padding: 6px 2px;
+      transition: color 0.2s ease;
+      letter-spacing: -0.01em;
     }
     .nav-link:hover {
-      color: var(--fg);
+      color: #fff;
     }
     .nav-link::after {
       content: '';
       position: absolute;
-      bottom: -4px;
+      bottom: 0;
       left: 0;
       width: 0%;
       height: 2px;
       background: var(--blue-glow);
-      transition: var(--transition);
+      transition: width 0.25s ease;
       border-radius: 2px;
+      box-shadow: 0 0 8px var(--blue-glow);
     }
     .nav-link:hover::after {
       width: 100%;
     }
 
+    /* Nav CTA Group */
     .nav-cta-group {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: clamp(8px, 1vw, 12px);
+      flex-shrink: 0;
+    }
+    .nav-cta-group .btn-primary {
+      padding: 9px 18px;
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      border-radius: var(--radius-full);
+      box-shadow: 0 0 20px rgba(0, 120, 255, 0.35);
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
+    /* Language Toggle Switcher with National Flags */
+    .flag-icon {
+      width: 17px;
+      height: 12px;
+      border-radius: 2px;
+      display: inline-block;
+      vertical-align: middle;
+      flex-shrink: 0;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+    }
+    .lang-pill-toggle {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(6, 27, 58, 0.75);
+      border: 1px solid var(--surface-border-strong);
+      border-radius: var(--radius-full);
+      padding: 3px 4px;
+      gap: 3px;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      user-select: none;
+      flex-shrink: 0;
+    }
+    .lang-pill-toggle:hover {
+      border-color: var(--blue-glow);
+      box-shadow: 0 0 14px rgba(0, 120, 255, 0.3);
+    }
+    .lang-pill-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 8px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      border-radius: var(--radius-full);
+      color: var(--fg-muted);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .lang-pill-btn:hover {
+      color: var(--fg);
+    }
+    .lang-pill-btn.active {
+      color: #fff;
+      background: var(--electric-blue);
+      box-shadow: 0 0 10px rgba(0, 120, 255, 0.6);
+    }
+    .mobile-lang-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: rgba(6, 27, 58, 0.6);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      margin-bottom: 20px;
+    }
+    .mobile-lang-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--fg-muted);
+    }
+/* Animated Hamburger Button */
     .nav-toggle {
       display: none;
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       align-items: center;
       justify-content: center;
-      color: var(--fg);
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--surface-border);
-      background: rgba(6, 27, 58, 0.4);
+      border-radius: 12px;
+      border: 1px solid var(--surface-border-strong);
+      background: rgba(6, 27, 58, 0.5);
+      cursor: pointer;
+      position: relative;
+      transition: var(--transition);
+      padding: 0;
+    }
+    .nav-toggle:hover {
+      background: rgba(0, 120, 255, 0.2);
+      border-color: var(--blue-glow);
+    }
+    .nav-toggle-icon {
+      width: 20px;
+      height: 14px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .nav-toggle-line {
+      width: 100%;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: transform 0.25s ease, opacity 0.2s ease, background-color 0.25s ease;
+      transform-origin: center;
+    }
+    /* Morph Hamburger to X when active */
+    .nav-toggle.active .nav-toggle-line:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+      background: var(--signal-orange);
+    }
+    .nav-toggle.active .nav-toggle-line:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    .nav-toggle.active .nav-toggle-line:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+      background: var(--signal-orange);
     }
 
-    /* Mobile Drawer */
+    /* Mobile Drawer - Attached to Header Bottom */
     .mobile-menu-drawer {
-      display: none;
-      position: fixed;
-      top: 118px;
+      position: absolute;
+      top: 100%;
       left: 0;
       right: 0;
       background: rgba(5, 7, 12, 0.98);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
       border-bottom: 1px solid var(--surface-border-strong);
-      padding: 24px;
-      backdrop-filter: blur(20px);
-      z-index: 89;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95);
+      padding: 20px 24px 28px;
+      display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 8px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(-8px);
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+      max-height: calc(100vh - 75px);
+      overflow-y: auto;
+      z-index: 100;
     }
     .mobile-menu-drawer.active {
-      display: flex;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
     }
     .mobile-nav-link {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
       color: var(--fg);
-      padding: 8px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 11px 14px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: transparent;
+      border: 1px solid transparent;
+      transition: var(--transition);
+    }
+    .mobile-nav-link:hover, .mobile-nav-link:active {
+      background: rgba(0, 120, 255, 0.08);
+      border-color: var(--surface-border);
+      color: var(--blue-glow);
+    }
+    .mobile-nav-link .nav-idx {
+      font-family: var(--font-display);
+      font-size: 11px;
+      color: var(--fg-subtle);
+      letter-spacing: 0.1em;
+    }
+    .mobile-drawer-cta {
+      margin-top: 12px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .mobile-drawer-trust {
+      text-align: center;
+      font-size: 12px;
+      color: var(--fg-muted);
+      line-height: 1.5;
+    }
+    .mobile-drawer-trust strong {
+      color: var(--signal-orange);
     }
 
     /* ═════════════════════════════════════════════════════════
@@ -420,12 +609,8 @@
     ═════════════════════════════════════════════════════════ */
     .hero {
       position: relative;
-      padding: 80px 0 100px;
+      padding: 70px 0 90px;
       overflow: hidden;
-      min-height: calc(100vh - 120px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
     }
     /* Ambient electric glow orb */
     .hero-orb {
@@ -458,7 +643,7 @@
 
     .hero-content {
       text-align: center;
-      max-width: 880px;
+      max-width: 980px;
       margin: 0 auto;
       position: relative;
       z-index: 2;
@@ -466,26 +651,30 @@
 
     .hero h1 {
       font-family: var(--font-display);
-      font-size: clamp(38px, 6.2vw, 72px);
+      font-size: clamp(34px, 5.2vw, 64px);
       font-weight: 700;
-      line-height: 1.06;
+      line-height: 1.12;
       letter-spacing: -0.035em;
       margin: 20px auto;
       color: var(--fg);
+      text-wrap: balance;
     }
     .hero h1 .gradient-text {
       background: linear-gradient(135deg, #ffffff 10%, var(--blue-glow) 50%, #2563eb 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      display: inline-block;
+      display: inline;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
     }
 
     .hero-subtitle {
-      font-size: clamp(16px, 1.8vw, 19px);
+      font-size: clamp(15.5px, 1.7vw, 18.5px);
       line-height: 1.75;
       color: var(--fg-muted);
-      max-width: 660px;
+      max-width: 720px;
       margin: 0 auto 36px;
+      text-wrap: pretty;
     }
     .hero-subtitle strong {
       color: var(--off-white);
@@ -623,7 +812,7 @@
     }
     .manifesto-grid {
       display: grid;
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: 1.15fr 1.85fr;
       gap: 48px;
       align-items: center;
     }
@@ -638,10 +827,11 @@
     }
     .manifesto-left h2 {
       font-family: var(--font-display);
-      font-size: clamp(26px, 3.2vw, 38px);
+      font-size: clamp(24px, 3vw, 36px);
       font-weight: 700;
-      line-height: 1.2;
+      line-height: 1.25;
       color: var(--fg);
+      text-wrap: balance;
     }
     .manifesto-left h2 em {
       font-style: normal;
@@ -816,6 +1006,8 @@
       font-size: 13px;
       font-weight: 600;
       color: var(--fg-muted);
+      flex-wrap: wrap;
+      gap: 10px;
     }
     .bento-footer .action-link {
       display: flex;
@@ -1461,7 +1653,7 @@
       line-height: 1.7;
     }
     .faq-item.open .faq-answer {
-      max-height: 250px;
+      max-height: 600px;
       padding-bottom: 24px;
     }
 
@@ -1607,12 +1799,78 @@
       }
     }
 
+    @media (max-width: 1140px) {
+      .nav-links {
+        gap: 14px;
+      }
+      .nav-link {
+        font-size: 13.5px;
+      }
+      .nav-cta-group {
+        gap: 8px;
+      }
+      .nav-cta-group .btn-primary {
+        padding: 8px 14px;
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 1040px) {
+      .nav-links {
+        display: none !important;
+      }
+      .nav-toggle {
+        display: flex !important;
+      }
+      .nav-inner {
+        gap: 12px;
+      }
+    }
+
     @media (max-width: 768px) {
+      .top-bar {
+        padding: 7px 12px;
+        font-size: 11.5px;
+      }
+      .top-bar-full {
+        display: none;
+      }
+      .top-bar-mobile {
+        display: inline;
+      }
+      .site-nav {
+        border-bottom-color: rgba(255, 255, 255, 0.08);
+      }
+      .nav-inner {
+        height: 62px;
+      }
       .nav-links, .nav-cta-group .btn-primary {
         display: none;
       }
       .nav-toggle {
         display: flex;
+        width: 40px;
+        height: 40px;
+      }
+      .brand-logo-img {
+        height: 34px;
+        max-height: 34px;
+      }
+      .hero {
+        padding: 50px 0 70px;
+        min-height: auto;
+      }
+      .hero-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+      .hero-actions .btn {
+        width: 100%;
+      }
+      .hero-value-badge {
+        font-size: 12px;
+        padding: 6px 14px;
+        text-align: center;
       }
       .workflow-step-panel {
         grid-template-columns: 1fr;
@@ -1624,15 +1882,12 @@
         grid-template-columns: 1fr;
       }
       .hero-badges-strip {
-        gap: 14px;
+        gap: 10px;
+        padding: 12px 16px;
         border-radius: var(--radius-lg);
       }
       .hero-badge-divider {
         display: none;
-      }
-      .brand-logo-img {
-        height: 38px;
-        max-height: 38px;
       }
       .slider-label {
         font-size: 10px;
@@ -1645,6 +1900,485 @@
       .slider-label.after {
         right: 10px;
       }
+      .pricing-card {
+        padding: 36px 20px;
+      }
+      .pricing-contrast-box {
+        padding: 16px 14px;
+      }
+      .pricing-checklist li {
+        font-size: 14px;
+      }
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       14. THE 4-PILLAR CINEMATIC AI FRAMEWORK
+    ═════════════════════════════════════════════════════════ */
+    .framework-section {
+      padding: 100px 0;
+      position: relative;
+      background: linear-gradient(180deg, var(--bg) 0%, #061122 50%, var(--bg) 100%);
+      border-top: 1px solid var(--surface-border);
+      border-bottom: 1px solid var(--surface-border);
+    }
+    .framework-contrast-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      background: rgba(6, 27, 58, 0.45);
+      border: 1px solid var(--surface-border-strong);
+      border-radius: var(--radius-lg);
+      padding: 26px 32px;
+      margin-bottom: 50px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+    .contrast-col { flex: 1; }
+    .contrast-col p {
+      font-size: 14.5px;
+      color: var(--fg-muted);
+      line-height: 1.6;
+      margin-top: 8px;
+    }
+    .contrast-tag {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .contrast-col.amateur .contrast-tag { color: #ef4444; }
+    .contrast-col.director .contrast-tag { color: var(--blue-glow); }
+    .contrast-divider {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--fg-subtle);
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      padding: 8px 14px;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.05em;
+    }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .pillar-card {
+      background: var(--surface-card);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      position: relative;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+    .pillar-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--surface-border-glow);
+      box-shadow: 0 16px 40px rgba(0, 120, 255, 0.15);
+    }
+    .pillar-card.highlighted {
+      border-color: rgba(0, 120, 255, 0.5);
+      background: rgba(9, 23, 49, 0.85);
+    }
+    .pillar-glow {
+      position: absolute;
+      top: -1px;
+      left: 20%;
+      right: 20%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--blue-glow), transparent);
+      box-shadow: 0 0 15px var(--blue-glow);
+    }
+    .pillar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .pillar-index {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: var(--blue-glow);
+    }
+    .pillar-badge {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--fg-muted);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .pillar-badge.badge-blue {
+      background: rgba(0, 120, 255, 0.15);
+      color: var(--blue-glow);
+      border-color: rgba(85, 183, 255, 0.35);
+    }
+    .pillar-icon-box {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-md);
+      background: rgba(0, 120, 255, 0.1);
+      border: 1px solid var(--surface-border);
+      color: var(--blue-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .pillar-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .pillar-desc {
+      font-size: 15px;
+      color: var(--fg-muted);
+      line-height: 1.65;
+      margin-bottom: 22px;
+    }
+    .pillar-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+      flex-grow: 1;
+    }
+    .pillar-features li {
+      font-size: 14px;
+      color: var(--fg);
+      line-height: 1.5;
+      position: relative;
+      padding-left: 18px;
+    }
+    .pillar-features li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--blue-glow);
+    }
+    .pillar-features strong { color: #fff; }
+    .pillar-footer {
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .pillar-spec {
+      font-size: 12.5px;
+      color: var(--fg-subtle);
+      font-family: var(--font-display);
+      letter-spacing: 0.04em;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       15. THE COMMERCIAL PRODUCTION VAULT
+    ═════════════════════════════════════════════════════════ */
+    .vault-section {
+      padding: 110px 0;
+      position: relative;
+      background: radial-gradient(circle at 50% 0%, rgba(0, 120, 255, 0.08) 0%, transparent 65%);
+      border-top: 1px solid var(--surface-border);
+    }
+    .vault-bento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    .vault-card {
+      background: var(--surface-card);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-xl);
+      padding: 36px 30px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+    .vault-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--surface-border-strong);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 120, 255, 0.2);
+    }
+    .vault-card-wide {
+      grid-column: span 3;
+      background: linear-gradient(135deg, rgba(6, 27, 58, 0.85) 0%, rgba(9, 17, 34, 0.95) 100%);
+      border: 1px solid rgba(85, 183, 255, 0.3);
+    }
+    .vault-card-badge {
+      display: inline-block;
+      align-self: flex-start;
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 149, 0, 0.15);
+      color: var(--signal-orange);
+      border: 1px solid rgba(255, 149, 0, 0.3);
+      margin-bottom: 22px;
+    }
+    .vault-icon {
+      color: var(--blue-glow);
+      margin-bottom: 18px;
+    }
+    .vault-card h3 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .vault-card p {
+      font-size: 15px;
+      color: var(--fg-muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .brief-categories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 10px;
+    }
+    .brief-chip {
+      background: rgba(5, 7, 12, 0.65);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .brief-chip .chip-num {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--blue-glow);
+    }
+    .brief-chip strong {
+      display: block;
+      font-size: 14px;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .brief-chip span {
+      font-size: 12px;
+      color: var(--fg-subtle);
+      line-height: 1.4;
+      display: block;
+    }
+    .vault-feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .vault-feature-list li {
+      font-size: 13.5px;
+      color: var(--fg);
+      position: relative;
+      padding-left: 18px;
+    }
+    .vault-feature-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--signal-orange);
+      font-weight: 700;
+    }
+    .vault-summary-box {
+      background: linear-gradient(90deg, #091a38 0%, #061122 100%);
+      border: 1px solid var(--surface-border-strong);
+      border-radius: var(--radius-lg);
+      padding: 26px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .vault-total-label {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--fg-muted);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .vault-total-price {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .vault-total-price strike {
+      font-size: 24px;
+      color: #ef4444;
+      font-family: var(--font-display);
+      font-weight: 700;
+    }
+    .vault-free-tag {
+      background: rgba(34, 197, 94, 0.15);
+      color: #4ade80;
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       16. VALUE-FIRST PRICING & TRUST SIGNALS
+    ═════════════════════════════════════════════════════════ */
+    .hero-value-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(6, 27, 58, 0.7);
+      border: 1px solid var(--surface-border-strong);
+      padding: 8px 20px;
+      border-radius: var(--radius-full);
+      font-size: 13.5px;
+      color: var(--fg);
+      margin-top: 18px;
+      max-width: 100%;
+      text-align: center;
+      justify-content: center;
+      line-height: 1.5;
+    }
+    .hero-value-badge strong {
+      color: var(--signal-orange);
+    }
+    .pricing-value-manifesto {
+      background: rgba(0, 120, 255, 0.08);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      font-size: 13.5px;
+      color: var(--fg-muted);
+      line-height: 1.6;
+      text-align: left;
+    }
+    .pricing-value-manifesto strong {
+      color: #fff;
+    }
+    .pricing-contrast-box {
+      background: rgba(5, 7, 12, 0.75);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 20px 22px;
+      margin-bottom: 28px;
+      text-align: left;
+    }
+    .contrast-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13.5px;
+      color: var(--fg-muted);
+      padding: 6px 0;
+    }
+    .contrast-row .val {
+      font-family: var(--font-display);
+      color: var(--fg);
+      font-weight: 600;
+    }
+    .contrast-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 10px;
+      padding-top: 10px;
+    }
+    .strike-val {
+      color: #ef4444;
+      text-decoration: line-through;
+      font-family: var(--font-display);
+      font-size: 16px;
+    }
+    .contrast-final-call {
+      background: rgba(0, 120, 255, 0.12);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      margin-top: 12px;
+      font-size: 13.5px;
+      color: #fff;
+      text-align: center;
+      font-weight: 600;
+    }
+    .contrast-final-call .highlight-price {
+      color: var(--signal-orange);
+      font-weight: 800;
+      font-size: 15px;
+    }
+    .pricing-trust-badges {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: left;
+    }
+    .trust-badge-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12.5px;
+      color: var(--fg-muted);
+    }
+    .trust-badge-item svg {
+      color: var(--blue-glow);
+      flex-shrink: 0;
+    }
+    .trust-badge-item strong { color: #fff; }
+
+    /* Responsive Queries for New Modules */
+    @media (max-width: 992px) {
+      .pillars-grid { grid-template-columns: 1fr; }
+      .vault-bento-grid { grid-template-columns: 1fr; }
+      .vault-card-wide { grid-column: span 1; }
+      .brief-categories-grid { grid-template-columns: 1fr; }
+      .vault-summary-box {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+      }
+      .vault-total-price { justify-content: center; }
+    }
+    @media (max-width: 768px) {
+      .framework-contrast-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+      .contrast-divider { margin: 8px 0; }
     }
   </style>
 </head>
@@ -1654,8 +2388,9 @@
        TOP ANNOUNCEMENT BAR
   ═══════════════════════════════════════════════════ -->
   <aside class="top-bar" aria-label="Announcement">
-    <span>✦ ZERO TO AI SKOOL LAUNCH OS · FOUNDING MEMBER ACCESS · $9 ALL-ACCESS PASS ✦</span>
-    <a href="#pricing">Claim Early Access →</a>
+    <span class="top-bar-full" data-i18n="top_bar_full">✦ THE PRODUCTION OPERATING SYSTEM FOR AI CREATORS · DIRECT SKOOL PASS · ONLY $9 ✦</span>
+    <span class="top-bar-mobile" data-i18n="top_bar_mobile">✦ Direct Skool Pass · Only $9 ✦</span>
+    <a href="#pricing" data-i18n="top_bar_cta">Get Instant Access →</a>
   </aside>
 
   <!-- ═══════════════════════════════════════════════════
@@ -1668,37 +2403,130 @@
           <img src="assets/logo-full.png" alt="Zero To AI" class="brand-logo-img" />
         </a>
 
+        <!-- Desktop Navigation: 5 Curated Core Links with Optimal Breathing Room -->
         <nav class="nav-links" aria-label="Primary Navigation">
-          <a href="#ecosystem" class="nav-link">Ecosystem</a>
-          <a href="#workflow" class="nav-link">Pipeline</a>
-          <a href="#levels" class="nav-link">Roadmap</a>
-          <a href="#showcase" class="nav-link">Showcase</a>
-          <a href="#buildlab" class="nav-link">Build Lab</a>
-          <a href="#pricing" class="nav-link">Pricing ($9)</a>
-          <a href="#faq" class="nav-link">FAQ</a>
+          <a href="#framework" class="nav-link" data-i18n="nav_framework">Framework</a>
+          <a href="#workflow" class="nav-link" data-i18n="nav_workflow">Pipeline</a>
+          <a href="#showcase" class="nav-link" data-i18n="nav_showcase">Showcase</a>
+          <a href="#vault" class="nav-link" data-i18n="nav_vault">Vault ($497)</a>
+          <a href="#pricing" class="nav-link" data-i18n="nav_pricing">Pricing ($9)</a>
         </nav>
 
         <div class="nav-cta-group">
-          <a href="#pricing" class="btn btn-primary">Join Skool ($9) <b>→</b></a>
-          <button class="nav-toggle" id="mobileMenuBtn" aria-label="Open menu">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <div class="lang-pill-toggle" role="group" aria-label="Language Selector">
+            <button type="button" class="lang-pill-btn active" data-lang="en" onclick="setLanguage('en')" title="Switch to English" aria-label="English">
+              <svg class="flag-icon" viewBox="0 0 640 480" width="16" height="12" aria-hidden="true">
+                <path fill="#bd3d44" d="M0 0h640v480H0z"/>
+                <path stroke="#fff" stroke-width="37" d="M0 55h640M0 129h640M0 203h640M0 277h640M0 351h640M0 425h640"/>
+                <path fill="#192f5d" d="M0 0h256v258H0z"/>
+                <g fill="#fff">
+                  <circle cx="32" cy="28" r="9"/><circle cx="96" cy="28" r="9"/><circle cx="160" cy="28" r="9"/><circle cx="224" cy="28" r="9"/>
+                  <circle cx="64" cy="64" r="9"/><circle cx="128" cy="64" r="9"/><circle cx="192" cy="64" r="9"/>
+                  <circle cx="32" cy="100" r="9"/><circle cx="96" cy="100" r="9"/><circle cx="160" cy="100" r="9"/><circle cx="224" cy="100" r="9"/>
+                  <circle cx="64" cy="136" r="9"/><circle cx="128" cy="136" r="9"/><circle cx="192" cy="136" r="9"/>
+                  <circle cx="32" cy="172" r="9"/><circle cx="96" cy="172" r="9"/><circle cx="160" cy="172" r="9"/><circle cx="224" cy="172" r="9"/>
+                  <circle cx="64" cy="208" r="9"/><circle cx="128" cy="208" r="9"/><circle cx="192" cy="208" r="9"/>
+                </g>
+              </svg>
+              <span>EN</span>
+            </button>
+            <button type="button" class="lang-pill-btn" data-lang="vi" onclick="setLanguage('vi')" title="Chuyển sang Tiếng Việt" aria-label="Tiếng Việt">
+              <svg class="flag-icon" viewBox="0 0 30 20" width="16" height="12" aria-hidden="true">
+                <rect width="30" height="20" fill="#da251d" rx="1"/>
+                <polygon points="15,4 17.35,11.23 11.2,6.76 18.8,6.76 12.65,11.23" fill="#ff0"/>
+              </svg>
+              <span>VI</span>
+            </button>
+          </div>
+          <a href="#pricing" class="btn btn-primary" data-i18n-html="nav_join_cta">Join Skool ($9) <b>→</b></a>
+          <button class="nav-toggle" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span class="nav-toggle-icon">
+              <span class="nav-toggle-line"></span>
+              <span class="nav-toggle-line"></span>
+              <span class="nav-toggle-line"></span>
+            </span>
           </button>
         </div>
       </div>
     </div>
-  </header>
 
-  <!-- Mobile Drawer -->
-  <div class="mobile-menu-drawer" id="mobileDrawer">
-    <a href="#ecosystem" class="mobile-nav-link" onclick="closeMobileDrawer()">Ecosystem</a>
-    <a href="#workflow" class="mobile-nav-link" onclick="closeMobileDrawer()">Pipeline</a>
-    <a href="#levels" class="mobile-nav-link" onclick="closeMobileDrawer()">Roadmap</a>
-    <a href="#showcase" class="mobile-nav-link" onclick="closeMobileDrawer()">Showcase</a>
-    <a href="#buildlab" class="mobile-nav-link" onclick="closeMobileDrawer()">Build Lab</a>
-    <a href="#pricing" class="mobile-nav-link" onclick="closeMobileDrawer()">Pricing ($9)</a>
-    <a href="#faq" class="mobile-nav-link" onclick="closeMobileDrawer()">FAQ</a>
-    <a href="#pricing" class="btn btn-primary" onclick="closeMobileDrawer()" style="margin-top:10px">Join Skool ($9) →</a>
-  </div>
+    <!-- Mobile Drawer Attached Seamlessly Inside Header -->
+    <div class="mobile-menu-drawer" id="mobileDrawer">
+      <div class="mobile-lang-bar">
+        <span class="mobile-lang-title" data-i18n="lang_select_title">Language / Ngôn ngữ:</span>
+        <div class="lang-pill-toggle" role="group" aria-label="Mobile Language Selector">
+          <button type="button" class="lang-pill-btn active" data-lang="en" onclick="setLanguage('en')">
+            <svg class="flag-icon" viewBox="0 0 640 480" width="16" height="12" aria-hidden="true">
+              <path fill="#bd3d44" d="M0 0h640v480H0z"/>
+              <path stroke="#fff" stroke-width="37" d="M0 55h640M0 129h640M0 203h640M0 277h640M0 351h640M0 425h640"/>
+              <path fill="#192f5d" d="M0 0h256v258H0z"/>
+              <g fill="#fff">
+                <circle cx="32" cy="28" r="9"/><circle cx="96" cy="28" r="9"/><circle cx="160" cy="28" r="9"/><circle cx="224" cy="28" r="9"/>
+                <circle cx="64" cy="64" r="9"/><circle cx="128" cy="64" r="9"/><circle cx="192" cy="64" r="9"/>
+                <circle cx="32" cy="100" r="9"/><circle cx="96" cy="100" r="9"/><circle cx="160" cy="100" r="9"/><circle cx="224" cy="100" r="9"/>
+                <circle cx="64" cy="136" r="9"/><circle cx="128" cy="136" r="9"/><circle cx="192" cy="136" r="9"/>
+                <circle cx="32" cy="172" r="9"/><circle cx="96" cy="172" r="9"/><circle cx="160" cy="172" r="9"/><circle cx="224" cy="172" r="9"/>
+                <circle cx="64" cy="208" r="9"/><circle cx="128" cy="208" r="9"/><circle cx="192" cy="208" r="9"/>
+              </g>
+            </svg>
+            <span>English</span>
+          </button>
+          <button type="button" class="lang-pill-btn" data-lang="vi" onclick="setLanguage('vi')">
+            <svg class="flag-icon" viewBox="0 0 30 20" width="16" height="12" aria-hidden="true">
+              <rect width="30" height="20" fill="#da251d" rx="1"/>
+              <polygon points="15,4 17.35,11.23 11.2,6.76 18.8,6.76 12.65,11.23" fill="#ff0"/>
+            </svg>
+            <span>Tiếng Việt</span>
+          </button>
+        </div>
+      </div>
+      <a href="#ecosystem" class="mobile-nav-link" onclick="closeMobileDrawer()">
+        <span data-i18n="mob_ecosystem">The Ecosystem</span>
+        <span class="nav-idx">01</span>
+      </a>
+      <a href="#framework" class="mobile-nav-link" onclick="closeMobileDrawer()">
+        <span data-i18n="mob_framework">4-Pillar Framework</span>
+        <span class="nav-idx">02</span>
+      </a>
+      <a href="#workflow" class="mobile-nav-link" onclick="closeMobileDrawer()">
+        <span data-i18n="mob_workflow">Production Pipeline</span>
+        <span class="nav-idx">03</span>
+      </a>
+      <a href="#showcase" class="mobile-nav-link" onclick="closeMobileDrawer()">
+        <span data-i18n="mob_showcase">Reel Showcase</span>
+        <span class="nav-idx">04</span>
+      </a>
+      <a href="#buildlab" class="mobile-nav-link" onclick="closeMobileDrawer()">
+        <span data-i18n="mob_buildlab">Build Lab Critiques</span>
+        <span class="nav-idx">05</span>
+      </a>
+      <a href="#vault" class="mobile-nav-link" onclick="closeMobileDrawer()">
+        <span data-i18n="mob_vault">Commercial Vault ($497)</span>
+        <span class="nav-idx">06</span>
+      </a>
+      <a href="#levels" class="mobile-nav-link" onclick="closeMobileDrawer()">
+        <span data-i18n="mob_levels">Stage Roadmap</span>
+        <span class="nav-idx">07</span>
+      </a>
+      <a href="#pricing" class="mobile-nav-link" onclick="closeMobileDrawer()">
+        <span data-i18n-html="mob_pricing">Admission &amp; Pricing ($9)</span>
+        <span class="nav-idx">08</span>
+      </a>
+      <a href="#faq" class="mobile-nav-link" onclick="closeMobileDrawer()">
+        <span data-i18n="mob_faq">Radical FAQ</span>
+        <span class="nav-idx">09</span>
+      </a>
+
+      <div class="mobile-drawer-cta">
+        <a href="#pricing" class="btn btn-primary btn-lg" onclick="closeMobileDrawer()" style="width:100%;justify-content:center;font-size:15px" data-i18n-html="mob_join_btn">
+          Join Skool ($9 All-Access) <b>→</b>
+        </a>
+        <div class="mobile-drawer-trust" data-i18n-html="mob_trust_note">
+          ⚡ <strong>Instant Access:</strong> Flat $9 one-time · 30-Day Guarantee
+        </div>
+      </div>
+    </div>
+  </header>
 
   <!-- ═══════════════════════════════════════════════════
        HERO SECTION (CINEMATIC PORTAL & CREATORS CLUB SHOWCASE)
@@ -1710,31 +2538,36 @@
       <div class="hero-content">
         <div class="badge-pill">
           <span class="pulse-dot"></span>
-          <span>THE GENERATIVE STUDIO OPERATING SYSTEM · MEDIA · MARKETING · AI DIRECTING</span>
+          <span data-i18n="hero_pill">THE GENERATIVE STUDIO OPERATING SYSTEM · MEDIA · MARKETING · AI DIRECTING</span>
         </div>
 
-        <h1>
+        <h1 data-i18n-html="hero_title">
           From prompt uncertainty<br />
           to <span class="gradient-text">director-grade output.</span>
         </h1>
 
-        <p class="hero-subtitle">
+        <p class="hero-subtitle" data-i18n-html="hero_subtitle">
           Stop hoarding tutorial bookmarks and messy prompt folders. Zero To AI is the production-first operating system where <strong>Creators, Marketers &amp; Visual Directors</strong> transform generative AI into client-grade commercial assets through structured briefs, camera grammar, and frame-by-frame critique.
         </p>
 
         <div class="hero-actions">
-          <a href="#pricing" class="btn btn-primary btn-lg">Claim Founding Access — $9 <b>→</b></a>
-          <a href="#showcase" class="btn btn-ghost btn-lg">Explore Showcase Reels ↓</a>
+          <a href="#pricing" class="btn btn-primary btn-lg" data-i18n-html="hero_btn_primary">Claim All-Access Pass — $9 <b>→</b></a>
+          <a href="#showcase" class="btn btn-ghost btn-lg" data-i18n="hero_btn_ghost">Explore Showcase Reels ↓</a>
         </div>
 
-        <div class="hero-badges-strip">
-          <div class="hero-badge-item"><strong>Skool</strong> Creative Studio</div>
+        <div class="hero-value-badge">
+          <span class="pulse-dot"></span>
+          <span data-i18n-html="hero_value_badge"><strong>Direct Skool Admission:</strong> Flat $9 One-Time · Instant Studio Access · Zero Hidden Fees</span>
+        </div>
+
+        <div class="hero-badges-strip" style="margin-top:24px">
+          <div class="hero-badge-item" data-i18n-html="hero_badge_1"><strong>Skool</strong> Creative Studio</div>
           <div class="hero-badge-divider"></div>
-          <div class="hero-badge-item"><strong>Production</strong> Masterclass</div>
+          <div class="hero-badge-item" data-i18n-html="hero_badge_2"><strong>Production</strong> Masterclass</div>
           <div class="hero-badge-divider"></div>
-          <div class="hero-badge-item"><strong>Build Lab</strong> 1-on-1 Critiques</div>
+          <div class="hero-badge-item" data-i18n-html="hero_badge_3"><strong>Build Lab</strong> 1-on-1 Critiques</div>
           <div class="hero-badge-divider"></div>
-          <div class="hero-badge-item"><strong>Commercial</strong> Brief Matrix</div>
+          <div class="hero-badge-item" data-i18n-html="hero_badge_4"><strong>Commercial</strong> Brief Matrix</div>
         </div>
       </div>
 
@@ -1755,7 +2588,7 @@
           <div class="hero-video-controls">
             <div class="video-tag">
               <span class="live-dot"></span>
-              <span>CINEMATIC AI REEL · RUNWAY GEN-3 &amp; MIDJOURNEY V6.1</span>
+              <span data-i18n="hero_video_tag">CINEMATIC AI REEL · RUNWAY GEN-3 &amp; MIDJOURNEY V6.1</span>
             </div>
             <button class="video-btn-play" id="heroPlayToggle" aria-label="Toggle Audio Mute">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
@@ -1773,18 +2606,18 @@
     <div class="container">
       <div class="manifesto-grid">
         <div class="manifesto-left">
-          <p class="index-tag">00 / BRAND ESSENCE</p>
-          <h2>No passive tutorials.<br /><em>An operating rhythm built to ship.</em></h2>
+          <p class="index-tag" data-i18n="manifesto_tag">00 / BRAND ESSENCE</p>
+          <h2 data-i18n-html="manifesto_title">No passive tutorials.<br /><em>An operating rhythm built to ship.</em></h2>
         </div>
         <div class="manifesto-right">
-          <p>
+          <p data-i18n-html="manifesto_desc">
             Zero To AI operates as both production studio and craft accelerator. We speak through <strong>commercial briefs, structured pipelines, ruthless frame critique, and tangible client deliverables</strong> — never speculative hype, fake income claims, or one-click magic promises.
           </p>
           <div class="manifesto-pillars">
-            <div class="pillar-chip"><i>01</i> Build before browse</div>
-            <div class="pillar-chip"><i>02</i> Pipeline over magic</div>
-            <div class="pillar-chip"><i>03</i> Proof over hype</div>
-            <div class="pillar-chip"><i>04</i> Craft with intent</div>
+            <div class="pillar-chip" data-i18n-html="manifesto_p1"><i>01</i> Build before browse</div>
+            <div class="pillar-chip" data-i18n-html="manifesto_p2"><i>02</i> Pipeline over magic</div>
+            <div class="pillar-chip" data-i18n-html="manifesto_p3"><i>03</i> Proof over hype</div>
+            <div class="pillar-chip" data-i18n-html="manifesto_p4"><i>04</i> Craft with intent</div>
           </div>
         </div>
       </div>
@@ -1797,9 +2630,9 @@
   <section class="bento-section" id="ecosystem">
     <div class="container">
       <div class="text-center">
-        <div class="eyebrow mx-auto">01 / THE ALL-IN-ONE ECOSYSTEM</div>
-        <h2 class="section-title">The Complete Generative Studio Stack</h2>
-        <p class="section-desc mx-auto">
+        <div class="eyebrow mx-auto" data-i18n="bento_eyebrow">01 / THE ALL-IN-ONE ECOSYSTEM</div>
+        <h2 class="section-title" data-i18n="bento_title">The Complete Generative Studio Stack</h2>
+        <p class="section-desc mx-auto" data-i18n="bento_desc">
           Eliminate unorganized folders of half-rendered clips. Every module is engineered around an end-to-end commercial deliverable ready for client campaigns, social distribution, or your portfolio.
         </p>
       </div>
@@ -1810,15 +2643,15 @@
           <video class="bento-video-bg" autoplay muted loop playsinline poster="assets/videos/level-1-poster.jpg" src="assets/videos/level-1.mp4"></video>
           <div class="bento-overlay"></div>
           <div class="bento-content">
-            <div class="bento-tag">PRODUCTION MASTERCLASS</div>
-            <h3>40+ Hands-On Modules: Cinematic AI Image &amp; Video Production</h3>
-            <p>
+            <div class="bento-tag" data-i18n="bento_c1_tag">PRODUCTION MASTERCLASS</div>
+            <h3 data-i18n-html="bento_c1_title">40+ Hands-On Modules: Cinematic AI Image &amp; Video Production</h3>
+            <p data-i18n="bento_c1_desc">
               From core visual composition and lighting tokens to camera velocity, character continuity, and full multi-shot commercial storyboards using Midjourney v6.1, Flux.1, Runway Gen-3, Kling, and Luma.
             </p>
           </div>
           <div class="bento-footer">
-            <span>Curriculum updated weekly with new model releases</span>
-            <a href="#pricing" class="action-link">Explore modules <b>→</b></a>
+            <span data-i18n="bento_c1_footer">Curriculum updated weekly with new model releases</span>
+            <a href="#pricing" class="action-link" data-i18n-html="bento_c1_link">Explore modules <b>→</b></a>
           </div>
         </article>
 
@@ -1828,15 +2661,15 @@
             <div class="bento-icon-box orange">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             </div>
-            <div class="bento-tag orange">BUILD LAB · WEEKLY SPRINT</div>
-            <h3>Commercial Client Challenges &amp; Prize Sprints</h3>
-            <p>
+            <div class="bento-tag orange" data-i18n="bento_c2_tag">BUILD LAB · WEEKLY SPRINT</div>
+            <h3 data-i18n-html="bento_c2_title">Commercial Client Challenges &amp; Prize Sprints</h3>
+            <p data-i18n="bento_c2_desc">
               Tackle simulated agency briefs released every Monday. Submit your cuts, receive peer evaluations, and win funded AI Pro subscriptions.
             </p>
           </div>
           <div class="bento-footer">
-            <span>This Week: 15s Cyber Beverage Spot</span>
-            <span style="color:var(--signal-orange)">Active ✦</span>
+            <span data-i18n="bento_c2_footer_left">This Week: 15s Cyber Beverage Spot</span>
+            <span style="color:var(--signal-orange)" data-i18n="bento_c2_footer_right">Active ✦</span>
           </div>
         </article>
 
@@ -1846,15 +2679,15 @@
             <div class="bento-icon-box">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
             </div>
-            <div class="bento-tag">PORTFOLIO BRIEF MATRIX</div>
-            <h3>12+ Production-Ready Agency Briefs</h3>
-            <p>
+            <div class="bento-tag" data-i18n="bento_c3_tag">PORTFOLIO BRIEF MATRIX</div>
+            <h3 data-i18n="bento_c3_title">12+ Production-Ready Agency Briefs</h3>
+            <p data-i18n="bento_c3_desc">
               Plug-and-play moodboards, prompt matrices, lighting schematics, and project templates so you never face a blank canvas when pitching clients.
             </p>
           </div>
           <div class="bento-footer">
-            <span>Downloadable prompt matrices</span>
-            <a href="#pricing" class="action-link">View sample brief <b>→</b></a>
+            <span data-i18n="bento_c3_footer">Downloadable prompt matrices</span>
+            <a href="#pricing" class="action-link" data-i18n-html="bento_c3_link">View sample brief <b>→</b></a>
           </div>
         </article>
 
@@ -1863,15 +2696,15 @@
           <video class="bento-video-bg" autoplay muted loop playsinline poster="assets/videos/level-2-poster.jpg" src="assets/videos/level-2.mp4"></video>
           <div class="bento-overlay"></div>
           <div class="bento-content">
-            <div class="bento-tag">SKOOL CREATOR NETWORK</div>
-            <h3>A Curated Community for Serious Builders</h3>
-            <p>
+            <div class="bento-tag" data-i18n="bento_c4_tag">SKOOL CREATOR NETWORK</div>
+            <h3 data-i18n="bento_c4_title">A Curated Community for Serious Builders</h3>
+            <p data-i18n="bento_c4_desc">
               Share breakthrough prompt parameters, dissect experimental model updates, find project collaborators, and troubleshoot production roadblocks 24/7.
             </p>
           </div>
           <div class="bento-footer">
-            <span>Zero spam · High-signal discourse</span>
-            <a href="#pricing" class="action-link">Join network <b>→</b></a>
+            <span data-i18n="bento_c4_footer">Zero spam · High-signal discourse</span>
+            <a href="#pricing" class="action-link" data-i18n-html="bento_c4_link">Join network <b>→</b></a>
           </div>
         </article>
 
@@ -1880,17 +2713,154 @@
           <video class="bento-video-bg" autoplay muted loop playsinline poster="assets/videos/level-3-poster.jpg" src="assets/videos/level-3.mp4"></video>
           <div class="bento-overlay"></div>
           <div class="bento-content">
-            <div class="bento-tag">BUILD LAB CRITIQUE</div>
-            <h3>Frame-by-Frame Director Feedback</h3>
-            <p>
+            <div class="bento-tag" data-i18n="bento_c5_tag">BUILD LAB CRITIQUE</div>
+            <h3 data-i18n="bento_c5_title">Frame-by-Frame Director Feedback</h3>
+            <p data-i18n="bento_c5_desc">
               Submit your drafts to the Build Lab feed or live calls. Mentors dissect lighting consistency, camera pacing, and render artifacts until your work reaches commercial standards.
             </p>
           </div>
           <div class="bento-footer">
-            <span>24–48h Review Turnaround SLA</span>
-            <a href="#buildlab" class="action-link">Inspect rubric <b>→</b></a>
+            <span data-i18n="bento_c5_footer">24–48h Review Turnaround SLA</span>
+            <a href="#buildlab" class="action-link" data-i18n-html="bento_c5_link">Inspect rubric <b>→</b></a>
           </div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       THE 4-PILLAR CINEMATIC AI FRAMEWORK
+  ═══════════════════════════════════════════════════ -->
+  <section class="framework-section" id="framework">
+    <div class="container">
+      <!-- Section Header -->
+      <div class="text-center">
+        <div class="eyebrow mx-auto" data-i18n="fw_eyebrow">02 / THE DIRECTOR-GRADE FOUNDATION</div>
+        <h2 class="section-title" data-i18n-html="fw_title">
+          Tools change every 90 days.<br />
+          <span class="hl">The Cinematic Physics Framework is forever.</span>
+        </h2>
+        <p class="section-desc mx-auto" data-i18n="fw_desc">
+          Stop chasing fleeting prompt tricks. High-paying commercial clients don't pay for software features—they pay for narrative discipline, optical physics, and broadcast-grade post-production.
+        </p>
+      </div>
+
+      <!-- Amateur vs Director Contrast Banner -->
+      <div class="framework-contrast-banner">
+        <div class="contrast-col amateur">
+          <div class="contrast-tag" data-i18n="fw_amateur_tag">✕ The Amateur Way (Tool-Chasing)</div>
+          <p data-i18n="fw_amateur_desc">Endlessly prompt-gambling with vague keywords ("8k hyperrealistic Octane render"), burning GPU credits on inconsistent faces and deformed rubbery motions.</p>
+        </div>
+        <div class="contrast-divider">VS</div>
+        <div class="contrast-col director">
+          <div class="contrast-tag" data-i18n="fw_director_tag">✦ The Director-Grade OS (Zero To AI)</div>
+          <p data-i18n="fw_director_desc">Directing optical focal lengths, locking multi-shot character identity, governing temporal velocity curves, and mastering DaVinci ACES color pipelines.</p>
+        </div>
+      </div>
+
+      <!-- 4 Pillars Matrix Grid -->
+      <div class="pillars-grid">
+        <!-- Pillar 01 -->
+        <div class="pillar-card">
+          <div class="pillar-header">
+            <span class="pillar-index" data-i18n="fw_p1_idx">PILLAR 01</span>
+            <span class="pillar-badge" data-i18n-html="fw_p1_badge">OPTICS &amp; COMPOSITION</span>
+          </div>
+          <div class="pillar-icon-box">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"/>
+            </svg>
+          </div>
+          <h3 class="pillar-title" data-i18n-html="fw_p1_title">Camera Grammar &amp; Lens Physics</h3>
+          <p class="pillar-desc" data-i18n="fw_p1_desc">
+            Replace meaningless buzzwords with precise cinema optics. Direct AI engines with true focal compression, optical aberrations, sensor aspect ratios, and volumetric lighting tags.
+          </p>
+          <ul class="pillar-features">
+            <li data-i18n-html="fw_p1_f1"><strong>Lens Selection:</strong> 24mm Anamorphic wide angles vs 85mm f/1.4 prime portrait compression</li>
+            <li data-i18n-html="fw_p1_f2"><strong>Sensor Optics:</strong> ARRI Alexa LF dynamic range emulation &amp; 35mm film halation curves</li>
+            <li data-i18n-html="fw_p1_f3"><strong>Lighting Architecture:</strong> High-contrast chiaroscuro, cyan rim light, and Fresnel key setups</li>
+          </ul>
+          <div class="pillar-footer">
+            <span class="pillar-spec" data-i18n-html="fw_p1_spec">Model-Agnostic · Calibrated for MJ v6.1, Flux.1 &amp; SDXL</span>
+          </div>
+        </div>
+
+        <!-- Pillar 02 (Highlighted) -->
+        <div class="pillar-card highlighted">
+          <div class="pillar-glow"></div>
+          <div class="pillar-header">
+            <span class="pillar-index" data-i18n="fw_p2_idx">PILLAR 02</span>
+            <span class="pillar-badge badge-blue" data-i18n="fw_p2_badge">STUDIO BREAKTHROUGH</span>
+          </div>
+          <div class="pillar-icon-box">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h3 class="pillar-title" data-i18n-html="fw_p2_title">Multi-Shot Subject &amp; Spatial Consistency</h3>
+          <p class="pillar-desc" data-i18n="fw_p2_desc">
+            The single biggest bottleneck in commercial AI filmmaking solved. Our proprietary character &amp; environment anchoring system locks facial geometry, wardrobe, and 3D space across 20+ sequential shots.
+          </p>
+          <ul class="pillar-features">
+            <li data-i18n-html="fw_p2_f1"><strong>Identity Rigging:</strong> Multi-angle seed pinning and facial landmark preservation without morphing</li>
+            <li data-i18n-html="fw_p2_f2"><strong>Spatial Anchor Points:</strong> Re-shoot identical scenes across Wide, Medium, and Macro angles</li>
+            <li data-i18n-html="fw_p2_f3"><strong>Product Fidelity:</strong> Preserving client product packaging, logos, and textures without distortion</li>
+          </ul>
+          <div class="pillar-footer">
+            <span class="pillar-spec" data-i18n="fw_p2_spec">Eliminates 90% of discarded generation credits</span>
+          </div>
+        </div>
+
+        <!-- Pillar 03 -->
+        <div class="pillar-card">
+          <div class="pillar-header">
+            <span class="pillar-index" data-i18n="fw_p3_idx">PILLAR 03</span>
+            <span class="pillar-badge" data-i18n="fw_p3_badge">MOTION CHOREOGRAPHY</span>
+          </div>
+          <div class="pillar-icon-box">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="5 3 19 12 5 21 5 3"/><path d="M19 5v14"/>
+            </svg>
+          </div>
+          <h3 class="pillar-title" data-i18n-html="fw_p3_title">Temporal Motion Physics &amp; Velocity</h3>
+          <p class="pillar-desc" data-i18n="fw_p3_desc">
+            Eliminate robotic floating and surreal liquid artifacts. Command motion brush vectors, frame interpolation, speed ramps, and real-world weight distribution.
+          </p>
+          <ul class="pillar-features">
+            <li data-i18n-html="fw_p3_f1"><strong>Speed Ramping:</strong> Cinematic 120fps slow-motion transitions snaps into high-velocity action</li>
+            <li data-i18n-html="fw_p3_f2"><strong>Camera Trajectories:</strong> Dolly push-ins, continuous orbital sweeps, and crane descents</li>
+            <li data-i18n-html="fw_p3_f3"><strong>Collision Dynamics:</strong> Realistic fluid splashes, micro-condensation, and aerodynamic smoke trails</li>
+          </ul>
+          <div class="pillar-footer">
+            <span class="pillar-spec" data-i18n="fw_p3_spec">Engineered for Runway Gen-3 Alpha, Kling 1.5 &amp; Luma</span>
+          </div>
+        </div>
+
+        <!-- Pillar 04 -->
+        <div class="pillar-card">
+          <div class="pillar-header">
+            <span class="pillar-index" data-i18n="fw_p4_idx">PILLAR 04</span>
+            <span class="pillar-badge" data-i18n="fw_p4_badge">COMMERCIAL FINISHING</span>
+          </div>
+          <div class="pillar-icon-box">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
+            </svg>
+          </div>
+          <h3 class="pillar-title" data-i18n-html="fw_p4_title">Master Post-Production &amp; Color Grading</h3>
+          <p class="pillar-desc" data-i18n="fw_p4_desc">
+            Raw AI footage is just the negative stock. The polish that commands $3,000+ client checks happens in DaVinci Resolve: precision ACES grading, analog grain fusion, and layered sound design.
+          </p>
+          <ul class="pillar-features">
+            <li data-i18n-html="fw_p4_f1"><strong>ACES Color Science:</strong> Emulating Kodak 5219 / 2383 35mm print film stock</li>
+            <li data-i18n-html="fw_p4_f2"><strong>Spatial Audio Stems:</strong> Sub-bass rumbles, Foley micro-impacts, and bespoke risers</li>
+            <li data-i18n-html="fw_p4_f3"><strong>Optical Upscaling:</strong> 4K ProRes 422HQ clean upscaling removing AI micro-artifacts</li>
+          </ul>
+          <div class="pillar-footer">
+            <span class="pillar-spec" data-i18n="fw_p4_spec">Agency Broadcast Deliverable Standard</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1901,9 +2871,9 @@
   <section class="workflow-section" id="workflow">
     <div class="container">
       <div class="text-center">
-        <div class="eyebrow mx-auto">02 / PRODUCTION PIPELINE</div>
-        <h2 class="section-title">Brief · Engineer · Render · Polish · Deliver</h2>
-        <p class="section-desc mx-auto">
+        <div class="eyebrow mx-auto" data-i18n="wf_eyebrow">02 / PRODUCTION PIPELINE</div>
+        <h2 class="section-title" data-i18n="wf_title">Brief · Engineer · Render · Polish · Deliver</h2>
+        <p class="section-desc mx-auto" data-i18n="wf_desc">
           A proven 4-stage pipeline that guides you from a raw client concept to a pristine, artifact-free visual asset without wasting GPU credits.
         </p>
       </div>
@@ -1912,19 +2882,19 @@
       <div class="workflow-tabs" role="tablist">
         <button class="workflow-tab-btn active" data-step="1">
           <span class="num">1</span>
-          <span>Commercial Briefing</span>
+          <span data-i18n="wf_tab_1">Commercial Briefing</span>
         </button>
         <button class="workflow-tab-btn" data-step="2">
           <span class="num">2</span>
-          <span>Prompt Architecture</span>
+          <span data-i18n="wf_tab_2">Prompt Architecture</span>
         </button>
         <button class="workflow-tab-btn" data-step="3">
           <span class="num">3</span>
-          <span>Multi-Model Render</span>
+          <span data-i18n="wf_tab_3">Multi-Model Render</span>
         </button>
         <button class="workflow-tab-btn" data-step="4">
           <span class="num">4</span>
-          <span>Rubric &amp; Polish</span>
+          <span data-i18n-html="wf_tab_4">Rubric &amp; Polish</span>
         </button>
       </div>
 
@@ -1933,14 +2903,14 @@
         <!-- Step 1 -->
         <div class="workflow-step-panel active" id="step-panel-1">
           <div class="workflow-step-copy">
-            <h4>Start with strict constraints, not random prompt rolls</h4>
-            <p>
+            <h4 data-i18n="wf_s1_title">Start with strict constraints, not random prompt rolls</h4>
+            <p data-i18n-html="wf_s1_desc">
               Never fire up a generative tool without a clear objective. Every Zero To AI project begins with a 3-line creative brief: Core Value Proposition, Visual Tone &amp; Palette, Camera Grammar, and Delivery Aspect Ratio.
             </p>
             <ul class="workflow-checklist">
-              <li><span class="chk">✓</span> Establish clear commercial positioning or narrative intent</li>
-              <li><span class="chk">✓</span> Lock delivery aspect ratios: 9:16 (Vertical Reels) or 16:9 (Cinematic Commercial)</li>
-              <li><span class="chk">✓</span> Prevent wasted generation credits on aimless iterations</li>
+              <li><span class="chk">✓</span> <span data-i18n="wf_s1_c1">Establish clear commercial positioning or narrative intent</span></li>
+              <li><span class="chk">✓</span> <span data-i18n="wf_s1_c2">Lock delivery aspect ratios: 9:16 (Vertical Reels) or 16:9 (Cinematic Commercial)</span></li>
+              <li><span class="chk">✓</span> <span data-i18n="wf_s1_c3">Prevent wasted generation credits on aimless iterations</span></li>
             </ul>
           </div>
           <div class="workflow-preview-window">
@@ -1963,14 +2933,14 @@
         <!-- Step 2 -->
         <div class="workflow-step-panel" id="step-panel-2">
           <div class="workflow-step-copy">
-            <h4>Prompt Architecture: Subject + Lighting + Camera Physics</h4>
-            <p>
+            <h4 data-i18n="wf_s2_title">Prompt Architecture: Subject + Lighting + Camera Physics</h4>
+            <p data-i18n="wf_s2_desc">
               Discard meaningless buzzwords like "hyperrealistic 8k". Master syntactic prompt engineering with explicit focal lengths, shutter speeds, sensor characteristics, and volumetric lighting tags.
             </p>
             <ul class="workflow-checklist">
-              <li><span class="chk">✓</span> Lock subject core identifiers for multi-shot consistency</li>
-              <li><span class="chk">✓</span> Direct camera paths: Pan, Orbit, Drone descent, Anamorphic push-in</li>
-              <li><span class="chk">✓</span> Deploy cinematic lighting tokens: Rim lighting, Volumetric haze, Golden hour diffusion</li>
+              <li><span class="chk">✓</span> <span data-i18n="wf_s2_c1">Lock subject core identifiers for multi-shot consistency</span></li>
+              <li><span class="chk">✓</span> <span data-i18n="wf_s2_c2">Direct camera paths: Pan, Orbit, Drone descent, Anamorphic push-in</span></li>
+              <li><span class="chk">✓</span> <span data-i18n="wf_s2_c3">Deploy cinematic lighting tokens: Rim lighting, Volumetric haze, Golden hour diffusion</span></li>
             </ul>
           </div>
           <div class="workflow-preview-window">
@@ -1989,14 +2959,14 @@
         <!-- Step 3 -->
         <div class="workflow-step-panel" id="step-panel-3">
           <div class="workflow-step-copy">
-            <h4>Multi-Model Render Pipeline &amp; Temporal Consistency</h4>
-            <p>
+            <h4 data-i18n-html="wf_s3_title">Multi-Model Render Pipeline &amp; Temporal Consistency</h4>
+            <p data-i18n-html="wf_s3_desc">
               Orchestrate best-in-class tools: Flux.1 &amp; Midjourney for razor-sharp initial keyframes, paired with Runway Gen-3 Alpha &amp; Kling AI for fluid, coherent camera motion and natural physics.
             </p>
             <ul class="workflow-checklist">
-              <li><span class="chk">✓</span> Preserve structural fidelity without facial distortion or hand warping</li>
-              <li><span class="chk">✓</span> Map motion velocity to sound design tempo and pacing beats</li>
-              <li><span class="chk">✓</span> AI upscale to pristine 4K resolution with micro-grain stabilization</li>
+              <li><span class="chk">✓</span> <span data-i18n="wf_s3_c1">Preserve structural fidelity without facial distortion or hand warping</span></li>
+              <li><span class="chk">✓</span> <span data-i18n="wf_s3_c2">Map motion velocity to sound design tempo and pacing beats</span></li>
+              <li><span class="chk">✓</span> <span data-i18n="wf_s3_c3">AI upscale to pristine 4K resolution with micro-grain stabilization</span></li>
             </ul>
           </div>
           <div class="workflow-preview-window">
@@ -2019,14 +2989,14 @@
         <!-- Step 4 -->
         <div class="workflow-step-panel" id="step-panel-4">
           <div class="workflow-step-copy">
-            <h4>Frame-by-Frame Rubric: Polish to Commercial Standard</h4>
-            <p>
+            <h4 data-i18n="wf_s4_title">Frame-by-Frame Rubric: Polish to Commercial Standard</h4>
+            <p data-i18n="wf_s4_desc">
               Submit drafts to the Build Lab. Mentors and peers critique your render against our 10-point Production Rubric: Lighting Consistency, Motion Fluidity, Framing Stability, and Commercial Utility.
             </p>
             <ul class="workflow-checklist">
-              <li><span class="chk">✓</span> Objective grading across 10 quantifiable criteria</li>
-              <li><span class="chk">✓</span> Actionable parameter fixes instead of vague design praise</li>
-              <li><span class="chk">✓</span> Final approved cuts graduate directly to the Global Member Showcase</li>
+              <li><span class="chk">✓</span> <span data-i18n="wf_s4_c1">Objective grading across 10 quantifiable criteria</span></li>
+              <li><span class="chk">✓</span> <span data-i18n="wf_s4_c2">Actionable parameter fixes instead of vague design praise</span></li>
+              <li><span class="chk">✓</span> <span data-i18n="wf_s4_c3">Final approved cuts graduate directly to the Global Member Showcase</span></li>
             </ul>
           </div>
           <div class="workflow-preview-window">
@@ -2055,9 +3025,9 @@
   <section class="audience-section" id="levels">
     <div class="container">
       <div class="text-center">
-        <div class="eyebrow mx-auto">03 / TAILORED FOR YOUR STAGE</div>
-        <h2 class="section-title">Wherever you start, Zero To AI meets your craft</h2>
-        <p class="section-desc mx-auto">
+        <div class="eyebrow mx-auto" data-i18n="aud_eyebrow">03 / TAILORED FOR YOUR STAGE</div>
+        <h2 class="section-title" data-i18n="aud_title">Wherever you start, Zero To AI meets your craft</h2>
+        <p class="section-desc mx-auto" data-i18n="aud_desc">
           Whether you are typing your first prompt or managing an agency visual department, the roadmap accelerates your workflow without fluff.
         </p>
       </div>
@@ -2066,19 +3036,19 @@
         <!-- Level 1: Beginners -->
         <div class="level-card">
           <div class="level-video-wrap">
-            <span class="level-badge">TIER 01</span>
+            <span class="level-badge" data-i18n="aud_s1_tier">TIER 01</span>
             <video autoplay muted loop playsinline poster="assets/videos/level-1-poster.jpg" src="assets/videos/level-1.mp4"></video>
           </div>
           <div class="level-card-body">
-            <p class="level-num">STAGE 01</p>
-            <h3>The Visual Starter</h3>
-            <p>
+            <p class="level-num" data-i18n="aud_s1_stage">STAGE 01</p>
+            <h3 data-i18n="aud_s1_title">The Visual Starter</h3>
+            <p data-i18n="aud_s1_desc">
               Never rendered an AI image or edited video? No coding, 3D software, or prior design background required. We guide you step-by-step from workspace setup to shipping your first pristine 4K cinematic asset.
             </p>
             <div class="level-tags">
-              <span class="level-tag-item">Zero Experience Needed</span>
-              <span class="level-tag-item">Intuitive Web UIs</span>
-              <span class="level-tag-item">First 4K Asset on Day 1</span>
+              <span class="level-tag-item" data-i18n="aud_s1_t1">Zero Experience Needed</span>
+              <span class="level-tag-item" data-i18n="aud_s1_t2">Intuitive Web UIs</span>
+              <span class="level-tag-item" data-i18n="aud_s1_t3">First 4K Asset on Day 1</span>
             </div>
           </div>
         </div>
@@ -2086,19 +3056,19 @@
         <!-- Level 2: Intermediates / Creators -->
         <div class="level-card">
           <div class="level-video-wrap">
-            <span class="level-badge">TIER 02</span>
+            <span class="level-badge" data-i18n="aud_s2_tier">TIER 02</span>
             <video autoplay muted loop playsinline poster="assets/videos/level-2-poster.jpg" src="assets/videos/level-2.mp4"></video>
           </div>
           <div class="level-card-body">
-            <p class="level-num">STAGE 02</p>
-            <h3>Creators &amp; Motion Artists</h3>
-            <p>
+            <p class="level-num" data-i18n="aud_s2_stage">STAGE 02</p>
+            <h3 data-i18n-html="aud_s2_title">Creators &amp; Motion Artists</h3>
+            <p data-i18n="aud_s2_desc">
               Frustrated by video stutter, rubbery faces, and erratic camera shifts? Master Motion Brushes, consistent character seeds, and high-retention 9:16 vertical storytelling engineered to stand out on social feeds.
             </p>
             <div class="level-tags">
-              <span class="level-tag-item">Character Continuity</span>
-              <span class="level-tag-item">Short-Form Reels / TikTok</span>
-              <span class="level-tag-item">Portfolio Packaging</span>
+              <span class="level-tag-item" data-i18n="aud_s2_t1">Character Continuity</span>
+              <span class="level-tag-item" data-i18n="aud_s2_t2">Short-Form Reels / TikTok</span>
+              <span class="level-tag-item" data-i18n="aud_s2_t3">Portfolio Packaging</span>
             </div>
           </div>
         </div>
@@ -2106,19 +3076,19 @@
         <!-- Level 3: Advanced / Marketers -->
         <div class="level-card">
           <div class="level-video-wrap">
-            <span class="level-badge">TIER 03</span>
+            <span class="level-badge" data-i18n="aud_s3_tier">TIER 03</span>
             <video autoplay muted loop playsinline poster="assets/videos/level-3-poster.jpg" src="assets/videos/level-3.mp4"></video>
           </div>
           <div class="level-card-body">
-            <p class="level-num">STAGE 03</p>
-            <h3>Commercial Directors &amp; Marketers</h3>
-            <p>
+            <p class="level-num" data-i18n="aud_s3_stage">STAGE 03</p>
+            <h3 data-i18n-html="aud_s3_title">Commercial Directors &amp; Marketers</h3>
+            <p data-i18n="aud_s3_desc">
               Cut visual production budgets by up to 80% while dramatically speeding up creative pitch cycles. Build end-to-end commercial pipelines from script to moodboards to broadcast-ready video ads.
             </p>
             <div class="level-tags">
-              <span class="level-tag-item">Commercial TVC Spots</span>
-              <span class="level-tag-item">Pre-Vis Storyboard Pipelines</span>
-              <span class="level-tag-item">80% Production Cost Reduction</span>
+              <span class="level-tag-item" data-i18n="aud_s3_t1">Commercial TVC Spots</span>
+              <span class="level-tag-item" data-i18n="aud_s3_t2">Pre-Vis Storyboard Pipelines</span>
+              <span class="level-tag-item" data-i18n="aud_s3_t3">80% Production Cost Reduction</span>
             </div>
           </div>
         </div>
@@ -2132,9 +3102,9 @@
   <section class="showcase-section" id="showcase">
     <div class="container">
       <div class="text-center">
-        <div class="eyebrow mx-auto">04 / PRODUCTION REEL</div>
-        <h2 class="section-title">Built With The Zero To AI Pipeline</h2>
-        <p class="section-desc mx-auto">
+        <div class="eyebrow mx-auto" data-i18n="sc_eyebrow">04 / PRODUCTION REEL</div>
+        <h2 class="section-title" data-i18n="sc_title">Built With The Zero To AI Pipeline</h2>
+        <p class="section-desc mx-auto" data-i18n="sc_desc">
           Every frame, fluid simulation, and lighting setup below was generated using the workflows taught inside the Skool Classroom.
         </p>
       </div>
@@ -2146,7 +3116,7 @@
             <video autoplay muted loop playsinline poster="assets/videos/level-1-poster.jpg" src="assets/videos/level-1.mp4"></video>
           </div>
           <div class="showcase-info">
-            <h4>Commercial Fashion Reel 9:16</h4>
+            <h4 data-i18n="sc_v1_title">Commercial Fashion Reel 9:16</h4>
             <div class="showcase-meta">
               <span class="tool-badge">Runway Gen-3 + Flux.1</span>
               <span>12s Render</span>
@@ -2160,7 +3130,7 @@
             <video autoplay muted loop playsinline poster="assets/videos/level-2-poster.jpg" src="assets/videos/level-2.mp4"></video>
           </div>
           <div class="showcase-info">
-            <h4>Cinematic Product Reveal</h4>
+            <h4 data-i18n="sc_v2_title">Cinematic Product Reveal</h4>
             <div class="showcase-meta">
               <span class="tool-badge">Kling AI + Midjourney v6.1</span>
               <span>15s Render</span>
@@ -2174,7 +3144,7 @@
             <video autoplay muted loop playsinline poster="assets/videos/level-3-poster.jpg" src="assets/videos/level-3.mp4"></video>
           </div>
           <div class="showcase-info">
-            <h4>Atmospheric Cyber City Sequence</h4>
+            <h4 data-i18n="sc_v3_title">Atmospheric Cyber City Sequence</h4>
             <div class="showcase-meta">
               <span class="tool-badge">Luma Dream Machine</span>
               <span>10s Render</span>
@@ -2188,7 +3158,7 @@
             <video autoplay muted loop playsinline poster="assets/videos/hero-poster.jpg" src="assets/videos/hero.mp4"></video>
           </div>
           <div class="showcase-info">
-            <h4>Narrative Character Storyboard Cut</h4>
+            <h4 data-i18n="sc_v4_title">Narrative Character Storyboard Cut</h4>
             <div class="showcase-meta">
               <span class="tool-badge">Midjourney v6.1 + Kling</span>
               <span>18s Render</span>
@@ -2205,9 +3175,9 @@
   <section class="buildlab-section" id="buildlab">
     <div class="container">
       <div class="text-center">
-        <div class="eyebrow mx-auto">05 / THE POWER OF FRAME-BY-FRAME FEEDBACK</div>
-        <h2 class="section-title">The Difference a Director-Grade Rubric Makes</h2>
-        <p class="section-desc mx-auto">
+        <div class="eyebrow mx-auto" data-i18n="bl_eyebrow">05 / THE POWER OF FRAME-BY-FRAME FEEDBACK</div>
+        <h2 class="section-title" data-i18n="bl_title">The Difference a Director-Grade Rubric Makes</h2>
+        <p class="section-desc mx-auto" data-i18n="bl_desc">
           Unguided prompting produces plastic skin, flat lighting, and incoherent micro-details. Drag the slider to see how direct mentor critique refines a flat draft into a photorealistic 4K cinematic hero asset.
         </p>
       </div>
@@ -2215,13 +3185,13 @@
       <div class="slider-comparison-box" id="comparisonSlider">
         <!-- After Layer (Underneath - Full Cinematic 4K Masterpiece) -->
         <div class="slider-after-layer">
-          <span class="slider-label after">DIRECTOR-GRADED ASSET (RUBRIC REFINED) ✦</span>
+          <span class="slider-label after" data-i18n="bl_after_label">DIRECTOR-GRADED ASSET (RUBRIC REFINED) ✦</span>
           <img src="assets/compare-after.jpg" alt="Rubric-Refined Cinematic 4K Commercial Asset" />
         </div>
 
         <!-- Before Layer (Clipped Top - Flat Initial Draft) -->
         <div class="slider-before-layer" id="beforeWrap">
-          <span class="slider-label before">UNCALIBRATED PROMPT DRAFT (FLAT)</span>
+          <span class="slider-label before" data-i18n="bl_before_label">UNCALIBRATED PROMPT DRAFT (FLAT)</span>
           <img src="assets/compare-before.jpg" alt="Uncalibrated Initial Prompt Draft" />
         </div>
 
@@ -2230,74 +3200,276 @@
           <div class="slider-handle-button" aria-hidden="true">⇄</div>
         </div>
       </div>
-      <p class="text-center" style="margin-top:16px;font-size:13.5px;color:var(--fg-subtle)">
+      <p class="text-center" style="margin-top:16px;font-size:13.5px;color:var(--fg-subtle)" data-i18n="bl_drag_note">
         *Drag the slider left and right to compare volumetric lighting, condensation realism, and micro-surface details
       </p>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════
-       PRICING SECTION ($9 FOUNDING MEMBER PASS)
+       THE COMMERCIAL PRODUCTION VAULT ($497+ VALUE)
+  ═══════════════════════════════════════════════════ -->
+  <section class="vault-section" id="vault">
+    <div class="container">
+      <!-- Header -->
+      <div class="text-center">
+        <div class="eyebrow mx-auto" data-i18n="vt_eyebrow">05 / THE COMMERCIAL PRODUCTION VAULT</div>
+        <h2 class="section-title" data-i18n-html="vt_title">
+          Don't Just Learn Theory.<br />
+          <span class="hl">Inherit Our $497+ Turnkey Production Toolkit.</span>
+        </h2>
+        <p class="section-desc mx-auto" data-i18n="vt_desc">
+          When you join Zero To AI on Skool, you don't start with an intimidating blank screen. You instantly unlock the exact creative briefs, financial calculators, and legal contracts used to deliver commercial client projects.
+        </p>
+      </div>
+
+      <!-- Bento Grid Showcase -->
+      <div class="vault-bento-grid">
+        <!-- Bento Item 1: 12+ Agency Commercial Briefs (Large 3-Column Card) -->
+        <div class="vault-card vault-card-wide">
+          <div class="vault-card-badge" data-i18n="vt_c1_badge">VALUED AT $197 · INCLUDED 100% FREE WITH $9 PASS</div>
+          <div class="vault-card-content">
+            <div class="vault-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+              </svg>
+            </div>
+            <h3 data-i18n="vt_c1_title">12+ Agency-Grade Commercial Production Briefs</h3>
+            <p data-i18n="vt_c1_desc">
+              Production-tested creative briefs matching top-tier agency standards. Complete with director treatments, lighting blueprints, prompt seed formulas, and storyboard shotlists.
+            </p>
+
+            <div class="brief-categories-grid">
+              <div class="brief-chip">
+                <span class="chip-num">01</span>
+                <div>
+                  <strong data-i18n="vt_chip_1_title">Cyber Isotonic Beverage</strong>
+                  <span data-i18n-html="vt_chip_1_desc">High-speed macro splash &amp; condensation physics</span>
+                </div>
+              </div>
+              <div class="brief-chip">
+                <span class="chip-num">02</span>
+                <div>
+                  <strong data-i18n="vt_chip_2_title">Luxury Chronograph Timepiece</strong>
+                  <span data-i18n-html="vt_chip_2_desc">Sapphire glass optics &amp; tourbillon mechanical motion</span>
+                </div>
+              </div>
+              <div class="brief-chip">
+                <span class="chip-num">03</span>
+                <div>
+                  <strong data-i18n="vt_chip_3_title">EV Hypercar Night Reveal</strong>
+                  <span data-i18n-html="vt_chip_3_desc">Wet asphalt reflections &amp; aerodynamic light sweeps</span>
+                </div>
+              </div>
+              <div class="brief-chip">
+                <span class="chip-num">04</span>
+                <div>
+                  <strong data-i18n="vt_chip_4_title">Cyberpunk Neo-Tokyo Streetwear</strong>
+                  <span data-i18n-html="vt_chip_4_desc">Fabric micro-texture &amp; anamorphic cinematic flares</span>
+                </div>
+              </div>
+              <div class="brief-chip">
+                <span class="chip-num">05</span>
+                <div>
+                  <strong data-i18n="vt_chip_5_title">Spatial Computing Hardware</strong>
+                  <span data-i18n-html="vt_chip_5_desc">Matte obsidian chassis &amp; tactile UI interactions</span>
+                </div>
+              </div>
+              <div class="brief-chip">
+                <span class="chip-num">06+</span>
+                <div>
+                  <strong data-i18n-html="vt_chip_6_title">Fragrance, Spirits &amp; FinTech TVCs</strong>
+                  <span data-i18n-html="vt_chip_6_desc">Continuously updated inside the Skool Classroom</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bento Item 2: Pitch Deck & Pricing Calculator -->
+        <div class="vault-card">
+          <div class="vault-card-badge" data-i18n="vt_c2_badge">VALUED AT $147 · INCLUDED FREE</div>
+          <div class="vault-card-content">
+            <div class="vault-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+            </div>
+            <h3 data-i18n-html="vt_c2_title">Client Pitch Deck &amp; Pricing Calculator</h3>
+            <p data-i18n-html="vt_c2_desc">
+              Stop undercharging. Use our dynamic calculator to comfortably quote <strong>$1,500 – $5,000 per commercial spot</strong> based on deliverables, revisions, and distribution scope.
+            </p>
+            <ul class="vault-feature-list">
+              <li data-i18n-html="vt_c2_f1">Keynote &amp; Figma Agency Pitch Deck Templates</li>
+              <li data-i18n="vt_c2_f2">Cold outreach email scripts with proven 38% response rate</li>
+              <li data-i18n="vt_c2_f3">Value-based tier pricing matrix (Basic, Pro, Global Broadcast)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bento Item 3: Legal Licensing Agreement -->
+        <div class="vault-card">
+          <div class="vault-card-badge" data-i18n="vt_c3_badge">VALUED AT $97 · INCLUDED FREE</div>
+          <div class="vault-card-content">
+            <div class="vault-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3 data-i18n-html="vt_c3_title">Commercial IP &amp; Licensing Agreement</h3>
+            <p data-i18n="vt_c3_desc">
+              Protect your creative assets and give corporate clients total peace of mind. An attorney-reviewed contract governing generative AI copyright disclosure and commercial usage rights.
+            </p>
+            <ul class="vault-feature-list">
+              <li data-i18n="vt_c3_f1">Full IP transfer vs. Limited broadcast licensing clauses</li>
+              <li data-i18n-html="vt_c3_f2">Commercial warranty &amp; NDA confidentiality provisions</li>
+              <li data-i18n="vt_c3_f3">Milestone payment schedule terms (50% deposit before render)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bento Item 4: 4K Master Export Spec Sheet -->
+        <div class="vault-card">
+          <div class="vault-card-badge" data-i18n="vt_c4_badge">VALUED AT $56 · INCLUDED FREE</div>
+          <div class="vault-card-content">
+            <div class="vault-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/>
+              </svg>
+            </div>
+            <h3 data-i18n-html="vt_c4_title">4K Master Export &amp; Handoff Spec Sheet</h3>
+            <p data-i18n="vt_c4_desc">
+              The exact delivery protocols expected by high-end creative agencies. Standardized folder hierarchies, codec specifications, and split audio stem guidelines.
+            </p>
+            <ul class="vault-feature-list">
+              <li data-i18n-html="vt_c4_f1">ProRes 422HQ &amp; DNxHR broadcast export presets</li>
+              <li data-i18n="vt_c4_f2">Color space metadata flags: Rec.709 vs DCI-P3</li>
+              <li data-i18n="vt_c4_f3">Split audio stems hierarchy (Dialogue, Sound FX, Music WAVs)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Value Summary Anchor Strip -->
+      <div class="vault-summary-box">
+        <div class="vault-summary-left">
+          <span class="vault-total-label" data-i18n="vt_sum_label">TOTAL COMMERCIAL VAULT VALUE</span>
+          <div class="vault-total-price">
+            <strike>$497</strike>
+            <span class="vault-free-tag" data-i18n="vt_sum_free">100% FREE WITH $9 SKOOL PASS</span>
+          </div>
+        </div>
+        <div class="vault-summary-right">
+          <a href="#pricing" class="btn btn-orange" data-i18n-html="vt_sum_btn">
+            Unlock The Vault Now ($9) <b>→</b>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       PRICING SECTION ($9 TRANSPARENT SKOOL PASS)
   ═══════════════════════════════════════════════════ -->
   <section class="pricing-section" id="pricing">
     <div class="container">
       <div class="text-center">
-        <div class="eyebrow mx-auto">06 / TRANSPARENT PRICING</div>
-        <h2 class="section-title">Founding Member Admission</h2>
-        <p class="section-desc mx-auto">
-          No hidden charges. No recurring traps. An accessible $9 one-time investment to join serious builders committed to high-craft visual output.
+        <div class="eyebrow mx-auto" data-i18n="pr_eyebrow">06 / TRANSPARENT PRICING</div>
+        <h2 class="section-title" data-i18n="pr_title">All-Access Skool Admission</h2>
+        <p class="section-desc mx-auto" data-i18n="pr_desc">
+          No recurring traps. No paywalls. Just a single, honest $9 pass on Skool to access our full production classroom, commercial vaults, and live critique lab.
         </p>
       </div>
 
       <div class="pricing-card-wrap">
         <div class="pricing-card-glow"></div>
         <div class="pricing-card">
-          <div class="pricing-badge">FOUNDING MEMBER INVITATION · LIMITED SEATS</div>
+          <div class="pricing-badge" data-i18n="pr_badge">DIRECT SKOOL PASS · TRANSPARENT $9 ADMISSION</div>
 
+          <!-- Price Display -->
           <div class="pricing-price">
             <span class="price-currency">$</span>
             <span class="price-number">9</span>
-            <span class="price-period">/ one-time all-access pass</span>
+            <span class="price-period" data-i18n="pr_period">/ one-time all-access pass</span>
           </div>
 
-          <p class="price-original-note">
-            Standard tuition after cohort launch: <strike>$49</strike>
-          </p>
+          <!-- Why $9 Manifesto -->
+          <div class="pricing-value-manifesto" data-i18n-html="pr_manifesto">
+            <strong>Why only $9?</strong> High-craft AI filmmaking shouldn't be gatekept behind a $997 paywall. We eliminated agency bloat and course markups so every ambitious visual creator can access our production pipeline directly on Skool with zero friction.
+          </div>
+
+          <!-- Value Breakdown Box -->
+          <div class="pricing-contrast-box">
+            <div class="contrast-row">
+              <span data-i18n-html="pr_breakdown_1">4-Stage Director Masterclass (Optics &amp; Physics)</span>
+              <span class="val">$197</span>
+            </div>
+            <div class="contrast-row">
+              <span data-i18n-html="pr_breakdown_2">1-on-1 Build Lab Frame Critiques &amp; Sprints</span>
+              <span class="val">$150</span>
+            </div>
+            <div class="contrast-row">
+              <span data-i18n-html="pr_breakdown_3">The Commercial Production Vault (12+ Briefs &amp; Contracts)</span>
+              <span class="val">$497</span>
+            </div>
+            <div class="contrast-row">
+              <span data-i18n="pr_breakdown_4">Private Skool Creative Studio Access</span>
+              <span class="val">$99/mo</span>
+            </div>
+            <div class="contrast-total-row">
+              <span data-i18n="pr_breakdown_total">Total Real-World Value:</span>
+              <span class="strike-val">$943+</span>
+            </div>
+            <div class="contrast-final-call" data-i18n-html="pr_final_call">
+              Your Direct Skool Investment: <span class="highlight-price">$9 One-Time</span>
+            </div>
+          </div>
 
           <ul class="pricing-checklist">
             <li>
               <span class="chk">✓</span>
-              <span><strong>Full Classroom Masterclass:</strong> 4 comprehensive stages from fundamentals to advanced AI cinematography</span>
+              <span data-i18n-html="pr_chk_1"><strong>Instant Skool OS Access:</strong> Immediate entry to the full classroom and live studio</span>
             </li>
             <li>
               <span class="chk">✓</span>
-              <span><strong>1-on-1 Build Lab Critiques:</strong> Submit drafts and receive frame-by-frame mentor feedback on every project</span>
+              <span data-i18n-html="pr_chk_2"><strong>The 4-Pillar Cinematic AI Framework:</strong> Master optics, consistency &amp; DaVinci finishing</span>
             </li>
             <li>
               <span class="chk">✓</span>
-              <span><strong>Portfolio Brief Matrix:</strong> 12+ agency-grade commercial briefs with ready-to-deploy prompt matrices</span>
+              <span data-i18n-html="pr_chk_3"><strong>1-on-1 Build Lab Critiques:</strong> Frame-by-frame director feedback on your projects</span>
             </li>
             <li>
               <span class="chk">✓</span>
-              <span><strong>Weekly Creative Sprints:</strong> Compete in client simulation challenges with AI Pro subscription prize pools</span>
+              <span data-i18n-html="pr_chk_4"><strong>The Commercial Production Vault:</strong> 12+ Briefs, Pitch Deck &amp; Licensing Contracts ($497 value)</span>
             </li>
             <li>
               <span class="chk">✓</span>
-              <span><strong>Private Skool Community:</strong> Direct collaboration with vetted creators, directors, and serious builders</span>
+              <span data-i18n-html="pr_chk_5"><strong>Weekly Creative Sprints:</strong> Compete in client simulation challenges with AI Pro prizes</span>
             </li>
             <li>
               <span class="chk">✓</span>
-              <span><strong>Lifetime Curriculum Upgrades:</strong> Immediate access to newly released tool modules and pipeline updates</span>
+              <span data-i18n-html="pr_chk_6"><strong>Lifetime Curriculum Upgrades:</strong> Direct access to newly released model modules and tools</span>
             </li>
           </ul>
 
-          <a href="https://zero-to-ai-skool-launch-os.patches-twirler-2upo.chatgpt.site/#apply" class="btn btn-primary btn-lg" style="width:100%">
-            Claim Founding Member Pass — Only $9 <b>→</b>
+          <a href="https://zero-to-ai-skool-launch-os.patches-twirler-2upo.chatgpt.site/#apply" class="btn btn-primary btn-lg" style="width:100%;font-size:17px" data-i18n-html="pr_btn_cta">
+            Unlock Full Skool Access — Only $9 <b>→</b>
           </a>
 
-          <div class="guarantee-note">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            <span>30-Day 100% Money-Back Guarantee. If you don't ship a better asset, get a full refund.</span>
+          <!-- Trust Badges -->
+          <div class="pricing-trust-badges">
+            <div class="trust-badge-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span data-i18n-html="pr_trust_1"><strong>30-Day Money-Back Guarantee:</strong> 100% no-risk. If you don't ship better work, full refund.</span>
+            </div>
+            <div class="trust-badge-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span data-i18n-html="pr_trust_2"><strong>Instant Skool Activation:</strong> Your classroom invite is delivered immediately after checkout.</span>
+            </div>
+            <div class="trust-badge-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span data-i18n-html="pr_trust_3"><strong>Zero Subscription Traps:</strong> Single $9 pass. No recurring monthly charges.</span>
+            </div>
           </div>
         </div>
       </div>
@@ -2310,9 +3482,9 @@
   <section class="faq-section" id="faq">
     <div class="container">
       <div class="text-center">
-        <div class="eyebrow mx-auto">07 / FREQUENTLY ASKED QUESTIONS</div>
-        <h2 class="section-title">Radical Transparency Before You Join</h2>
-        <p class="section-desc mx-auto">
+        <div class="eyebrow mx-auto" data-i18n="faq_eyebrow">07 / FREQUENTLY ASKED QUESTIONS</div>
+        <h2 class="section-title" data-i18n="faq_title">Radical Transparency Before You Join</h2>
+        <p class="section-desc mx-auto" data-i18n="faq_desc">
           We adhere strictly to our Trust Guardrails: factual promises, zero guru illusions, and realistic creative mastery.
         </p>
       </div>
@@ -2321,10 +3493,10 @@
         <!-- FAQ 1 -->
         <div class="faq-item open">
           <div class="faq-question">
-            <span>Does this program promise overnight riches or thousands of dollars in passive income?</span>
+            <span data-i18n="faq_q1">Does this program promise overnight riches or thousands of dollars in passive income?</span>
             <span class="chevron">▼</span>
           </div>
-          <div class="faq-answer">
+          <div class="faq-answer" data-i18n="faq_a1">
             Absolutely not. In accordance with our Trust Guardrails: We do not promise effortless wealth, guaranteed client retainers, or overnight lifestyle transformations. We provide you with verified production workflows, technical camera grammar, and an agency-ready portfolio. Commercial revenue depends entirely on your craft, dedication, and how effectively you position your work in the market.
           </div>
         </div>
@@ -2332,10 +3504,10 @@
         <!-- FAQ 2 -->
         <div class="faq-item">
           <div class="faq-question">
-            <span>Are the required AI tools expensive to run during the course?</span>
+            <span data-i18n="faq_q2">Are the required AI tools expensive to run during the course?</span>
             <span class="chevron">▼</span>
           </div>
-          <div class="faq-answer">
+          <div class="faq-answer" data-i18n="faq_a2">
             Not at all. Our curriculum prioritizes platforms with generous free tiers (such as Flux.1 via open web interfaces and daily free generation credits on Kling and Luma). If you choose to subscribe to Pro plans for Midjourney or Runway, subscriptions typically range from $10 to $15/month and are completely optional.
           </div>
         </div>
@@ -2343,10 +3515,10 @@
         <!-- FAQ 3 -->
         <div class="faq-item">
           <div class="faq-question">
-            <span>I have zero background in filmmaking or design. Can I realistically keep up?</span>
+            <span data-i18n="faq_q3">I have zero background in filmmaking or design. Can I realistically keep up?</span>
             <span class="chevron">▼</span>
           </div>
-          <div class="faq-answer">
+          <div class="faq-answer" data-i18n="faq_a3">
             Yes. Zero To AI is specifically architected for creators starting from absolute zero. Instead of burying you in academic jargon, we immerse you in structured 3-line briefs, teaching you how to direct AI models and generate your first cinematic keyframe within 24 hours.
           </div>
         </div>
@@ -2354,10 +3526,10 @@
         <!-- FAQ 4 -->
         <div class="faq-item">
           <div class="faq-question">
-            <span>How does the Build Lab critique workflow work?</span>
+            <span data-i18n="faq_q4">How does the Build Lab critique workflow work?</span>
             <span class="chevron">▼</span>
           </div>
-          <div class="faq-answer">
+          <div class="faq-answer" data-i18n="faq_a4">
             Whenever you complete an assignment or commercial spot, you submit your draft to the Build Lab channel on Skool. Mentors evaluate your cut against our 10-point Production Rubric (evaluating lighting fidelity, motion fluidity, camera optics, and composition) and provide precise prompt and parameter adjustments within 24–48 hours.
           </div>
         </div>
@@ -2365,11 +3537,11 @@
         <!-- FAQ 5 -->
         <div class="faq-item">
           <div class="faq-question">
-            <span>Is the $9 fee a monthly subscription or a one-time payment?</span>
+            <span data-i18n="faq_q5">Is the $9 fee a monthly subscription or a one-time payment?</span>
             <span class="chevron">▼</span>
           </div>
-          <div class="faq-answer">
-            It is a single, one-time payment. As a Founding Member, your $9 pass grants you full lifetime access to the foundational classroom, all current brief matrices, community channels, and future curriculum additions without recurring subscription charges.
+          <div class="faq-answer" data-i18n="faq_a5">
+            It is a single, one-time payment. Your $9 pass grants you full lifetime access to the foundational classroom, the 4-Pillar framework, the complete commercial production vault, community channels, and future curriculum additions without recurring subscription charges.
           </div>
         </div>
       </div>
@@ -2382,12 +3554,15 @@
   <section class="final-cta">
     <div class="container">
       <div class="final-cta-box">
-        <div class="eyebrow mx-auto" style="color:var(--signal-orange)">TIME TO SHIP</div>
-        <h2>Stop hoarding tutorials.<br />Start shipping director-grade assets.</h2>
-        <p>
-          More than a community — this is your operating rhythm to master cinematic AI filmmaking and build a client-ready visual portfolio today.
+        <div class="eyebrow mx-auto" style="color:var(--signal-orange)" data-i18n="final_eyebrow">ONE FLAT $9 INVESTMENT</div>
+        <h2 data-i18n-html="final_title">Stop hoarding tutorials.<br />Start shipping director-grade assets.</h2>
+        <p data-i18n="final_desc">
+          For the price of a single lunch ($9), inherit a battle-tested AI filmmaking operating system, 12+ commercial briefs, legal contracts, and an active Skool studio of serious visual builders.
         </p>
-        <a href="#pricing" class="btn btn-orange btn-lg">Join Zero To AI — Only $9 <b>→</b></a>
+        <a href="https://zero-to-ai-skool-launch-os.patches-twirler-2upo.chatgpt.site/#apply" class="btn btn-orange btn-lg" data-i18n-html="final_cta_btn">Join Zero To AI on Skool — Only $9 <b>→</b></a>
+        <div style="margin-top: 18px; font-size: 13px; color: var(--fg-subtle);" data-i18n="final_trust_note">
+          🔒 Instant Access on Skool · 30-Day Money-Back Guarantee · No Monthly Hidden Fees
+        </div>
       </div>
     </div>
   </section>
@@ -2402,44 +3577,46 @@
           <a href="#top" class="brand-logo">
             <img src="assets/logo-full.png" alt="Zero To AI" class="brand-logo-img" />
           </a>
-          <p>
+          <p data-i18n="footer_brand_desc">
             The creative operating system empowering creators and marketers to transition from prompt guesswork to commercial AI production. Powered by the Skool ecosystem.
           </p>
         </div>
 
         <div>
-          <div class="footer-col-title">Curriculum</div>
+          <div class="footer-col-title" data-i18n="footer_col_curriculum">Curriculum</div>
           <ul class="footer-links">
-            <li><a href="#ecosystem">Classroom</a></li>
-            <li><a href="#buildlab">Build Lab Reviews</a></li>
-            <li><a href="#workflow">Portfolio Brief Matrix</a></li>
-            <li><a href="#showcase">Video Showcase Reel</a></li>
+            <li><a href="#ecosystem" data-i18n="footer_link_classroom">Classroom</a></li>
+            <li><a href="#framework" data-i18n="footer_link_framework">4-Pillar Framework</a></li>
+            <li><a href="#workflow" data-i18n="footer_link_pipeline">Production Pipeline</a></li>
+            <li><a href="#vault" data-i18n="footer_link_vault">Commercial Vault ($497)</a></li>
+            <li><a href="#buildlab" data-i18n="footer_link_buildlab">Build Lab Reviews</a></li>
+            <li><a href="#showcase" data-i18n="footer_link_showcase">Video Showcase Reel</a></li>
           </ul>
         </div>
 
         <div>
-          <div class="footer-col-title">Standards</div>
+          <div class="footer-col-title" data-i18n="footer_col_standards">Standards</div>
           <ul class="footer-links">
-            <li><a href="https://zero-to-ai-skool-launch-os.patches-twirler-2upo.chatgpt.site/#guardrails" target="_blank" rel="noopener">Brand Guidelines V1</a></li>
-            <li><a href="#faq">Trust Guardrails</a></li>
-            <li><a href="#faq">Refund Policy</a></li>
-            <li><a href="#faq">Terms of Service</a></li>
+            <li><a href="https://zero-to-ai-skool-launch-os.patches-twirler-2upo.chatgpt.site/#guardrails" target="_blank" rel="noopener" data-i18n="footer_link_guidelines">Brand Guidelines V1</a></li>
+            <li><a href="#faq" data-i18n="footer_link_guardrails">Trust Guardrails</a></li>
+            <li><a href="#faq" data-i18n="footer_link_refund">Refund Policy</a></li>
+            <li><a href="#faq" data-i18n="footer_link_tos">Terms of Service</a></li>
           </ul>
         </div>
 
         <div>
-          <div class="footer-col-title">Ecosystem</div>
+          <div class="footer-col-title" data-i18n="footer_col_ecosystem">Ecosystem</div>
           <ul class="footer-links">
-            <li><a href="#pricing">Skool Community OS</a></li>
-            <li><a href="#ecosystem">Weekly Sprints</a></li>
-            <li><a href="#pricing">Founding Member Pass</a></li>
+            <li><a href="#pricing" data-i18n="footer_link_community">Skool Community OS</a></li>
+            <li><a href="#ecosystem" data-i18n="footer_link_sprints">Weekly Sprints</a></li>
+            <li><a href="#pricing" data-i18n="footer_link_pass">Founding Member Pass</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <div>&copy; 2026 Zero To AI · Media · Marketing · AI. All rights reserved.</div>
-        <div>Crafted with precision under OPA KIT Fullstack Guidelines.</div>
+        <div data-i18n-html="footer_copy">&copy; 2026 Zero To AI · Media · Marketing · AI. All rights reserved.</div>
+        <div data-i18n="footer_opa">Crafted with precision under OPA KIT Fullstack Guidelines.</div>
       </div>
     </div>
   </footer>
@@ -2468,16 +3645,36 @@
       });
     }
 
-    // 2. Mobile Menu Toggle
+    // 2. Mobile Menu Toggle & Outside Click Handler
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileDrawer = document.getElementById('mobileDrawer');
     if (mobileMenuBtn && mobileDrawer) {
-      mobileMenuBtn.addEventListener('click', () => {
-        mobileDrawer.classList.toggle('active');
+      mobileMenuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = mobileDrawer.classList.toggle('active');
+        mobileMenuBtn.classList.toggle('active', isOpen);
+        mobileMenuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      // Close drawer when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!mobileDrawer.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+          closeMobileDrawer();
+        }
+      });
+
+      // Close on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMobileDrawer();
       });
     }
+
     function closeMobileDrawer() {
       if (mobileDrawer) mobileDrawer.classList.remove('active');
+      if (mobileMenuBtn) {
+        mobileMenuBtn.classList.remove('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      }
     }
 
     // 3. Workflow Simulator Tabs
@@ -2631,5 +3828,7 @@
       }
     });
   </script>
+  <!-- i18n Translation Engine -->
+  <script src="assets/i18n.js"></script>
 </body>
 </html>
