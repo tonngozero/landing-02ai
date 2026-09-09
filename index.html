@@ -1950,6 +1950,263 @@
     }
     .contrast-col.amateur .contrast-tag { color: #ef4444; }
     .contrast-col.director .contrast-tag { color: var(--blue-glow); }
+    
+    /* ═════════════════════════════════════════════════════════
+       9-PHASE ROADMAP CORE BACKBONE STYLES
+    ═════════════════════════════════════════════════════════ */
+    .roadmap-section {
+      padding: 100px 0;
+      position: relative;
+      background: radial-gradient(circle at 50% 15%, rgba(0, 120, 255, 0.08) 0%, transparent 60%);
+    }
+    .roadmap-stats-strip {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin: 28px 0 36px;
+    }
+    .roadmap-stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      background: rgba(6, 27, 58, 0.55);
+      border: 1px solid var(--surface-border);
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--fg);
+    }
+    .roadmap-stat-pill .stat-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 8px #22c55e;
+    }
+    .roadmap-milestone {
+      margin-top: 52px;
+    }
+    .milestone-header {
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(0, 120, 255, 0.15);
+    }
+    .milestone-badge-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .milestone-tag {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      background: rgba(0, 120, 255, 0.15);
+      color: var(--blue-glow);
+      border: 1px solid rgba(85, 183, 255, 0.3);
+    }
+    .milestone-tag.tag-orange {
+      background: rgba(255, 149, 0, 0.15);
+      color: var(--signal-orange);
+      border-color: rgba(255, 149, 0, 0.35);
+    }
+    .milestone-tag.tag-purple {
+      background: rgba(168, 85, 247, 0.15);
+      color: #c084fc;
+      border-color: rgba(168, 85, 247, 0.35);
+    }
+    .milestone-phases {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--fg-subtle);
+      letter-spacing: 0.08em;
+    }
+    .milestone-title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .milestone-desc {
+      font-size: 14.5px;
+      color: var(--fg-muted);
+      max-width: 800px;
+    }
+    .phases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .phase-card {
+      background: var(--surface-card);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      position: relative;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+    .phase-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--surface-border-glow);
+      box-shadow: 0 16px 36px rgba(0, 120, 255, 0.15);
+    }
+    .phase-card.highlighted {
+      border-color: rgba(0, 120, 255, 0.5);
+      background: rgba(9, 23, 49, 0.85);
+    }
+    .phase-card.highlight-orange {
+      border-color: rgba(255, 149, 0, 0.45);
+      background: rgba(30, 20, 10, 0.75);
+    }
+    .phase-card.highlight-orange:hover {
+      box-shadow: 0 16px 36px rgba(255, 149, 0, 0.2);
+    }
+    .phase-glow {
+      position: absolute;
+      top: -1px;
+      left: 15%;
+      right: 15%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--blue-glow), transparent);
+      box-shadow: 0 0 14px var(--blue-glow);
+    }
+    .phase-glow.glow-orange {
+      background: linear-gradient(90deg, transparent, var(--signal-orange), transparent);
+      box-shadow: 0 0 14px var(--signal-orange);
+    }
+    .phase-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .phase-num {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      color: var(--blue-glow);
+    }
+    .phase-num.num-orange {
+      color: var(--signal-orange);
+    }
+    .phase-tag {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--fg-muted);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .phase-tag.badge-blue {
+      background: rgba(0, 120, 255, 0.15);
+      color: var(--blue-glow);
+      border-color: rgba(85, 183, 255, 0.35);
+    }
+    .phase-tag.badge-orange {
+      background: rgba(255, 149, 0, 0.15);
+      color: var(--signal-orange);
+      border-color: rgba(255, 149, 0, 0.35);
+    }
+    .phase-title {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+      line-height: 1.25;
+    }
+    .phase-sub {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--blue-glow);
+      margin-bottom: 12px;
+      line-height: 1.45;
+    }
+    .phase-card.highlight-orange .phase-sub {
+      color: var(--signal-orange);
+    }
+    .phase-desc {
+      font-size: 13.5px;
+      color: var(--fg-muted);
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+    .phase-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+    .phase-bullets li {
+      font-size: 13px;
+      color: var(--fg);
+      line-height: 1.45;
+      position: relative;
+      padding-left: 16px;
+    }
+    .phase-bullets li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #22c55e;
+      font-weight: 800;
+      font-size: 12px;
+    }
+    .phase-footer {
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      font-size: 12px;
+      color: var(--fg-subtle);
+      line-height: 1.4;
+    }
+    .phase-tools-label {
+      font-weight: 700;
+      color: var(--fg-muted);
+    }
+    .roadmap-bottom-cta {
+      margin-top: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 24px 32px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(6, 27, 58, 0.8) 0%, rgba(9, 17, 34, 0.9) 100%);
+      border: 1px solid var(--surface-border-strong);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    }
+    .roadmap-cta-text {
+      font-size: 15.5px;
+      color: var(--fg);
+    }
+    .roadmap-cta-text strong {
+      color: #fff;
+    }
+    @media (max-width: 1040px) {
+      .phases-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 680px) {
+      .phases-grid { grid-template-columns: 1fr; }
+      .roadmap-bottom-cta { flex-direction: column; text-align: center; }
+    }
+
     .contrast-divider {
       font-family: var(--font-display);
       font-size: 13px;
@@ -2390,7 +2647,7 @@
   <aside class="top-bar" aria-label="Announcement">
     <span class="top-bar-full" data-i18n="top_bar_full">✦ ZERO TO AI CREATOR ACADEMY & COMMUNITY · FOUNDING MEMBERS ONLY $9/MO ✦</span>
     <span class="top-bar-mobile" data-i18n="top_bar_mobile">✦ Zero To AI Community · Only $9/mo ✦</span>
-    <a href="#pricing" data-i18n="top_bar_cta">Join Now →</a>
+    <a href="https://www.skool.com/zerotoai" target="_blank" rel="noopener" data-i18n="top_bar_cta">Join Now →</a>
   </aside>
 
   <!-- ═══════════════════════════════════════════════════
@@ -2405,7 +2662,7 @@
 
         <!-- Desktop Navigation: 5 Curated Core Links with Optimal Breathing Room -->
         <nav class="nav-links" aria-label="Primary Navigation">
-          <a href="#framework" class="nav-link" data-i18n="nav_framework">9-Phase Roadmap</a>
+          <a href="#roadmap" class="nav-link" data-i18n="nav_framework">9-Phase Roadmap</a>
           <a href="#workflow" class="nav-link" data-i18n="nav_workflow">Workflow</a>
           <a href="#showcase" class="nav-link" data-i18n="nav_showcase">Showcase</a>
           <a href="#vault" class="nav-link" data-i18n="nav_vault">Resource Vault</a>
@@ -2438,7 +2695,7 @@
               <span>VI</span>
             </button>
           </div>
-          <a href="#pricing" class="btn btn-primary" data-i18n-html="nav_join_cta">Join Skool ($9) <b>→</b></a>
+          <a href="https://www.skool.com/zerotoai" target="_blank" rel="noopener" class="btn btn-primary" data-i18n-html="nav_join_cta">Join Skool ($9) <b>→</b></a>
           <button class="nav-toggle" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
             <span class="nav-toggle-icon">
               <span class="nav-toggle-line"></span>
@@ -2504,21 +2761,17 @@
         <span data-i18n="mob_vault">Resource & Template Vault</span>
         <span class="nav-idx">06</span>
       </a>
-      <a href="#levels" class="mobile-nav-link" onclick="closeMobileDrawer()">
-        <span data-i18n="mob_levels">3-Stage Progression Path</span>
-        <span class="nav-idx">07</span>
-      </a>
       <a href="#pricing" class="mobile-nav-link" onclick="closeMobileDrawer()">
         <span data-i18n-html="mob_pricing">Pricing & Enrollment ($9/mo)</span>
-        <span class="nav-idx">08</span>
+        <span class="nav-idx">07</span>
       </a>
       <a href="#faq" class="mobile-nav-link" onclick="closeMobileDrawer()">
         <span data-i18n="mob_faq">Frequently Asked Questions</span>
-        <span class="nav-idx">09</span>
+        <span class="nav-idx">08</span>
       </a>
 
       <div class="mobile-drawer-cta">
-        <a href="#pricing" class="btn btn-primary btn-lg" onclick="closeMobileDrawer()" style="width:100%;justify-content:center;font-size:15px" data-i18n-html="mob_join_btn">Join Skool (Only $9/mo) <b>→</b></a>
+        <a href="https://www.skool.com/zerotoai" target="_blank" rel="noopener" class="btn btn-primary btn-lg" onclick="closeMobileDrawer()" style="width:100%;justify-content:center;font-size:15px" data-i18n-html="mob_join_btn">Join Skool (Only $9/mo) <b>→</b></a>
         <div class="mobile-drawer-trust" data-i18n-html="mob_trust_note">⚡ <strong>Founding Member Offer:</strong> $9/month · Cancel anytime · Instant access</div>
       </div>
     </div>
@@ -2542,13 +2795,13 @@
         <p class="hero-subtitle" data-i18n-html="hero_subtitle">Stop hoarding disconnected tutorials and prompt scraps. Zero To AI is a hands-on 9-Phase roadmap that takes you from complete beginner to producing hyper-realistic AI images, smooth AI videos, UGC ad creatives, and digital clones — with zero plastic look, full character consistency, and client-ready deliverables.</p>
 
         <div class="hero-actions">
-          <a href="#pricing" class="btn btn-primary btn-lg" data-i18n-html="hero_btn_primary">Join the Community — Only $9/mo <b>→</b></a>
-          <a href="#showcase" class="btn btn-ghost btn-lg" data-i18n="hero_btn_ghost">Explore the 9-Phase Roadmap ↓</a>
+          <a href="https://www.skool.com/zerotoai" target="_blank" rel="noopener" class="btn btn-primary btn-lg" data-i18n-html="hero_btn_primary">Join the Community — Only $9/mo <b>→</b></a>
+          <a href="#roadmap" class="btn btn-ghost btn-lg" data-i18n="hero_btn_ghost">Explore the 9-Phase Roadmap ↓</a>
         </div>
 
         <div class="hero-value-badge">
           <span class="pulse-dot"></span>
-          <span data-i18n-html="hero_value_badge">⚡ <strong>Founding Member Price:</strong> Only $9/mo or $55/yr · Cancel anytime · Full 9-Phase Access</span>
+          <span data-i18n-html="hero_value_badge">⚡ <strong>Founding Member Price:</strong> Lock in $9/month for life · Cancel anytime · Full 9-Phase Access</span>
         </div>
 
         <div class="hero-badges-strip" style="margin-top:24px">
@@ -2636,7 +2889,7 @@
           </div>
           <div class="bento-footer">
             <span data-i18n="bento_c1_footer">Continuously updated as new AI models and tools emerge</span>
-            <a href="#pricing" class="action-link" data-i18n-html="bento_c1_link">Explore all 9 phases <b>→</b></a>
+            <a href="#roadmap" class="action-link" data-i18n-html="bento_c1_link">Explore all 9 phases <b>→</b></a>
           </div>
         </article>
 
@@ -2706,15 +2959,32 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════
-       THE 4-PILLAR CINEMATIC AI FRAMEWORK
+       THE 9-PHASE ROADMAP (CORE BACKBONE)
   ═══════════════════════════════════════════════════ -->
-  <section class="framework-section" id="framework">
+  <section class="roadmap-section" id="roadmap">
+    <span id="framework" style="position:absolute;top:0;left:0;visibility:hidden;"></span>
     <div class="container">
       <!-- Section Header -->
       <div class="text-center">
-        <div class="eyebrow mx-auto" data-i18n="fw_eyebrow">02 / CORE FOUNDATIONS</div>
-        <h2 class="section-title" data-i18n-html="fw_title">AI tools update every month.<br /><span class="hl">Production fundamentals remain evergreen.</span></h2>
-        <p class="section-desc mx-auto" data-i18n="fw_desc">Stop chasing random, unverified prompt threads. Zero To AI teaches you the four structural pillars that ensure consistent, photorealistic, client-ready outputs across every generative platform.</p>
+        <div class="eyebrow mx-auto" data-i18n="roadmap_eyebrow">02 / THE 9-PHASE ROADMAP</div>
+        <h2 class="section-title" data-i18n-html="roadmap_title">"What do I learn for $9/month?"<br /><span class="hl">Here is your complete 9-Phase production roadmap.</span></h2>
+        <p class="section-desc mx-auto" data-i18n="roadmap_desc">No theoretical fluff, no endless prompt hoarding, and no confusing framework overload. Every phase is an actionable milestone taking you from complete beginner to client-ready AI video production and personal cloning.</p>
+        
+        <!-- Fast Stats Banner -->
+        <div class="roadmap-stats-strip">
+          <div class="roadmap-stat-pill">
+            <span class="stat-dot"></span>
+            <span data-i18n="roadmap_badge_lessons">114+ Video Lessons</span>
+          </div>
+          <div class="roadmap-stat-pill">
+            <span class="stat-dot"></span>
+            <span data-i18n="roadmap_badge_access">Full 9-Phase Access</span>
+          </div>
+          <div class="roadmap-stat-pill">
+            <span class="stat-dot"></span>
+            <span data-i18n="roadmap_badge_feedback">1-on-1 Build Lab Feedback</span>
+          </div>
+        </div>
       </div>
 
       <!-- Amateur vs Director Contrast Banner -->
@@ -2730,102 +3000,229 @@
         </div>
       </div>
 
-      <!-- 4 Pillars Matrix Grid -->
-      <div class="pillars-grid">
-        <!-- Pillar 01 -->
-        <div class="pillar-card">
-          <div class="pillar-header">
-            <span class="pillar-index" data-i18n="fw_p1_idx">PILLAR 01</span>
-            <span class="pillar-badge" data-i18n-html="fw_p1_badge">PHOTOREALISM & PROMPT MASTERY</span>
+      <!-- Milestone 1: Phases 1 to 3 -->
+      <div class="roadmap-milestone">
+        <div class="milestone-header">
+          <div class="milestone-badge-wrap">
+            <span class="milestone-tag" data-i18n="stage1_tag">STAGE 01 · FOUNDATIONS</span>
+            <span class="milestone-phases">PHASE 01 – 03</span>
           </div>
-          <div class="pillar-icon-box">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"/>
-            </svg>
-          </div>
-          <h3 class="pillar-title" data-i18n-html="fw_p1_title">The Realism Cheat Sheet & Anti-Plastic Framework</h3>
-          <p class="pillar-desc" data-i18n="fw_p1_desc">Eliminate artificial waxy textures. Master structured prompt engineering: focal length, volumetric light, skin pores, textile weave, and cinematic color temperature.</p>
-          <ul class="pillar-features">
-            <li data-i18n-html="fw_p1_f1"><strong>The Realism Cheat Sheet:</strong> Exact optical keywords that force AI models to render real human skin and natural textures</li>
-            <li data-i18n-html="fw_p1_f2"><strong>Cinematic Lighting:</strong> Golden hour diffusion, volumetric rim lighting, and dramatic shadow depth</li>
-            <li data-i18n-html="fw_p1_f3"><strong>4K Upscaling Pipeline:</strong> Upscaling keyframes to razor-sharp 4K print and broadcast resolution without artifacting</li>
-          </ul>
-          <div class="pillar-footer">
-            <span class="pillar-spec" data-i18n-html="fw_p1_spec">Optimized for Midjourney, Flux.1 & Nanobanana</span>
-          </div>
+          <h3 class="milestone-title" data-i18n="stage1_title">From Zero to Hyper-Realistic Visuals</h3>
+          <p class="milestone-desc" data-i18n="stage1_desc">Phases 1 to 3: Workspace setup, prompt engineering, and mastering photorealism with consistent characters.</p>
         </div>
+        <div class="phases-grid">
+          <!-- Phase 1 -->
+          <div class="phase-card">
+            <div class="phase-card-top">
+              <span class="phase-num" data-i18n="p1_num">PHASE 01</span>
+              <span class="phase-tag" data-i18n="p1_tag">Setup & Workflow</span>
+            </div>
+            <h4 class="phase-title" data-i18n="p1_name">Initiate</h4>
+            <p class="phase-sub" data-i18n="p1_sub">Start here, understand the ecosystem and set up your AI workflow.</p>
+            <p class="phase-desc" data-i18n="p1_desc">Set up your core AI creative workspace, navigate primary generative platforms, manage daily free GPU credits, and organize client-ready project directories.</p>
+            <ul class="phase-bullets">
+              <li data-i18n="p1_b1">Creative ecosystem orientation & tool selection</li>
+              <li data-i18n="p1_b2">Workspace configuration & credit preservation strategy</li>
+              <li data-i18n="p1_b3">Asset management & client handoff folder structure</li>
+            </ul>
+            <div class="phase-footer">
+              <span class="phase-tools-label">Focus:</span> Workspace Setup · Tool Navigation
+            </div>
+          </div>
 
-        <!-- Pillar 02 (Highlighted) -->
-        <div class="pillar-card highlighted">
-          <div class="pillar-glow"></div>
-          <div class="pillar-header">
-            <span class="pillar-index" data-i18n="fw_p2_idx">PILLAR 02</span>
-            <span class="pillar-badge badge-blue" data-i18n="fw_p2_badge">IDENTITY & AVATAR STUDIO</span>
+          <!-- Phase 2 -->
+          <div class="phase-card">
+            <div class="phase-card-top">
+              <span class="phase-num" data-i18n="p2_num">PHASE 02</span>
+              <span class="phase-tag" data-i18n="p2_tag">Prompt Mastery</span>
+            </div>
+            <h4 class="phase-title" data-i18n="p2_name">AI Foundations</h4>
+            <p class="phase-sub" data-i18n="p2_sub">Understand prompting and the fundamentals behind good AI output.</p>
+            <p class="phase-desc" data-i18n="p2_desc">Deconstruct prompt anatomy, token weighting, camera optics, focal lengths, and volumetric lighting to command AI engines with deliberate intention instead of random luck.</p>
+            <ul class="phase-bullets">
+              <li data-i18n="p2_b1">Anatomy of professional prompt architectures</li>
+              <li data-i18n="p2_b2">Camera optics: 35mm, 50mm, 85mm lenses & lighting angles</li>
+              <li data-i18n="p2_b3">Prompt debugging & eliminating unwanted mutations</li>
+            </ul>
+            <div class="phase-footer">
+              <span class="phase-tools-label">Focus:</span> Optical Physics · Token Weighting · Composition
+            </div>
           </div>
-          <div class="pillar-icon-box">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
-          </div>
-          <h3 class="pillar-title" data-i18n-html="fw_p2_title">Consistent Characters & Commercial AI Influencers</h3>
-          <p class="pillar-desc" data-i18n="fw_p2_desc">Solve generative AI's hardest challenge: keeping the exact same face, hair, and physique across multiple scenes, lighting setups, and camera angles.</p>
-          <ul class="pillar-features">
-            <li data-i18n-html="fw_p2_f1"><strong>Identity Locking:</strong> Anchor facial facial features and bone structure seamlessly across diverse scenes and outfits</li>
-            <li data-i18n-html="fw_p2_f2"><strong>Product Integration:</strong> Place real physical products directly into your avatar's hands using Wise Chat and mockup flows</li>
-            <li data-i18n-html="fw_p2_f3"><strong>Consistent Character Voice:</strong> Clone and assign a signature voice profile to maintain brand identity across all videos</li>
-          </ul>
-          <div class="pillar-footer">
-            <span class="pillar-spec" data-i18n="fw_p2_spec">Designed for AI Influencer Studios & UGC Creators</span>
-          </div>
-        </div>
 
-        <!-- Pillar 03 -->
-        <div class="pillar-card">
-          <div class="pillar-header">
-            <span class="pillar-index" data-i18n="fw_p3_idx">PILLAR 03</span>
-            <span class="pillar-badge" data-i18n="fw_p3_badge">MOTION DYNAMICS & LIPSYNC</span>
-          </div>
-          <div class="pillar-icon-box">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polygon points="5 3 19 12 5 21 5 3"/><path d="M19 5v14"/>
-            </svg>
-          </div>
-          <h3 class="pillar-title" data-i18n-html="fw_p3_title">Fluid Motion in Kling 3.0, Seedance 2.0 & HeyGen</h3>
-          <p class="pillar-desc" data-i18n="fw_p3_desc">Transform still images into lifelike cinematic motion without liquid warping or rubbery physics. Master camera paths and pixel-accurate lipsync.</p>
-          <ul class="pillar-features">
-            <li data-i18n-html="fw_p3_f1"><strong>Camera Motion Control:</strong> Execute precise Dolly pushes, horizontal pans, 360 orbits, and crane descents</li>
-            <li data-i18n-html="fw_p3_f2"><strong>Removing the 'AI' Look:</strong> Eliminate floating artifacts, hand mutations, and unnatural sudden motions</li>
-            <li data-i18n-html="fw_p3_f3"><strong>Natural AI Lipsync:</strong> Synchronize lip flaps and mouth shape perfectly to your voiceover audio files</li>
-          </ul>
-          <div class="pillar-footer">
-            <span class="pillar-spec" data-i18n="fw_p3_spec">Hands-on with Kling 3.0, Seedance 2.0 & HeyGen</span>
-          </div>
-        </div>
-
-        <!-- Pillar 04 -->
-        <div class="pillar-card">
-          <div class="pillar-header">
-            <span class="pillar-index" data-i18n="fw_p4_idx">PILLAR 04</span>
-            <span class="pillar-badge" data-i18n="fw_p4_badge">COMMERCIALIZATION & AUTOMATION</span>
-          </div>
-          <div class="pillar-icon-box">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
-            </svg>
-          </div>
-          <h3 class="pillar-title" data-i18n-html="fw_p4_title">High-Converting AI Ads & Under-10-Minute Workflows</h3>
-          <p class="pillar-desc" data-i18n="fw_p4_desc">Turn your AI capabilities into income: produce automated product review ads, claymation spots, brand TVCs, and scale delivery with node-based automation.</p>
-          <ul class="pillar-features">
-            <li data-i18n-html="fw_p4_f1"><strong>Commercial TVC Templates:</strong> Deconstruct high-end brand ads (Nike, BMW) into replicable modular shotlists</li>
-            <li data-i18n-html="fw_p4_f2"><strong>Advanced Flows in < 10 Mins:</strong> Node-based automation pipelines that spit out completed video ads in minutes</li>
-            <li data-i18n-html="fw_p4_f3"><strong>Capcut & SFX Sound Design:</strong> Rhythm-based editing, multi-layer sound effects, dynamic captions, and color touchups</li>
-          </ul>
-          <div class="pillar-footer">
-            <span class="pillar-spec" data-i18n="fw_p4_spec">Deliverable to paying brands and marketing agencies</span>
+          <!-- Phase 3 (Highlighted Breakthrough) -->
+          <div class="phase-card highlighted">
+            <div class="phase-glow"></div>
+            <div class="phase-card-top">
+              <span class="phase-num" data-i18n="p3_num">PHASE 03</span>
+              <span class="phase-tag badge-blue" data-i18n="p3_tag">Photorealism & Identity</span>
+            </div>
+            <h4 class="phase-title" data-i18n="p3_name">AI Images</h4>
+            <p class="phase-sub" data-i18n="p3_sub">Create realistic images, AI influencers and consistent characters.</p>
+            <p class="phase-desc" data-i18n="p3_desc">Apply The Realism Cheat Sheet to eliminate artificial waxy skin. Lock character facial bones and physique across multiple scenes, and insert physical products into avatar hands.</p>
+            <ul class="phase-bullets">
+              <li data-i18n="p3_b1">The Realism Cheat Sheet: optical modifiers to de-plasticize</li>
+              <li data-i18n="p3_b2">Facial identity locking across multi-scene compositions</li>
+              <li data-i18n="p3_b3">4K upscaling pipeline with Nanobanana & product integration</li>
+            </ul>
+            <div class="phase-footer">
+              <span class="phase-tools-label">Tools:</span> Midjourney · Flux.1 · Nanobanana 4K
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- Milestone 2: Phases 4 to 6 -->
+      <div class="roadmap-milestone">
+        <div class="milestone-header">
+          <div class="milestone-badge-wrap">
+            <span class="milestone-tag tag-orange" data-i18n="stage2_tag">STAGE 02 · PRODUCTION & ADS</span>
+            <span class="milestone-phases">PHASE 04 – 06</span>
+          </div>
+          <h3 class="milestone-title" data-i18n="stage2_title">From Static Visuals to Commercial Video Ads</h3>
+          <p class="milestone-desc" data-i18n="stage2_desc">Phases 4 to 6: Fluid camera motion, high-converting commercial ads (Nike, BMW, Claymation), and node automation in <10 mins.</p>
+        </div>
+        <div class="phases-grid">
+          <!-- Phase 4 -->
+          <div class="phase-card">
+            <div class="phase-card-top">
+              <span class="phase-num" data-i18n="p4_num">PHASE 04</span>
+              <span class="phase-tag" data-i18n="p4_tag">Fluid Motion & Lipsync</span>
+            </div>
+            <h4 class="phase-title" data-i18n="p4_name">AI Videos</h4>
+            <p class="phase-sub" data-i18n="p4_sub">Turn images and ideas into smooth, controlled AI video.</p>
+            <p class="phase-desc" data-i18n="p4_desc">Feed pristine keyframes into Kling 3.0 & Seedance 2.0. Direct camera trajectories (Dolly push, Pan, Orbit) and eradicate rubbery physics and floating artifact glitches.</p>
+            <ul class="phase-bullets">
+              <li data-i18n="p4_b1">Mastering Kling 3.0 & Seedance 2.0 camera paths</li>
+              <li data-i18n="p4_b2">Removing the 'AI' look: fixing hand morphs & liquid warps</li>
+              <li data-i18n="p4_b3">Pixel-perfect lipsync matching voiceover tracks</li>
+            </ul>
+            <div class="phase-footer">
+              <span class="phase-tools-label">Tools:</span> Kling 3.0 · Seedance 2.0 · HeyGen Motion
+            </div>
+          </div>
+
+          <!-- Phase 5 (Highlighted Commercial Value) -->
+          <div class="phase-card highlighted highlight-orange">
+            <div class="phase-glow glow-orange"></div>
+            <div class="phase-card-top">
+              <span class="phase-num num-orange" data-i18n="p5_num">PHASE 05</span>
+              <span class="phase-tag badge-orange" data-i18n="p5_tag">Commercial Ads & UGC</span>
+            </div>
+            <h4 class="phase-title" data-i18n="p5_name">AI Adverts & UGC</h4>
+            <p class="phase-sub" data-i18n="p5_sub">Build product ads, UGC creatives and commercial content.</p>
+            <p class="phase-desc" data-i18n="p5_desc">Build commercial video ads that generate client income: UGC product review ads, stop-motion Claymation spots, and premium cinematic TVCs (Nike, BMW style).</p>
+            <ul class="phase-bullets">
+              <li data-i18n="p5_b1">High-converting UGC avatar product review templates</li>
+              <li data-i18n="p5_b2">Claymation stop-motion & stylized brand commercial spots</li>
+              <li data-i18n="p5_b3">Nike & BMW cinematic TVC deconstruction & shotlists</li>
+            </ul>
+            <div class="phase-footer">
+              <span class="phase-tools-label">Deliverables:</span> Commercial Brand TVCs · UGC Ads
+            </div>
+          </div>
+
+          <!-- Phase 6 -->
+          <div class="phase-card">
+            <div class="phase-card-top">
+              <span class="phase-num" data-i18n="p6_num">PHASE 06</span>
+              <span class="phase-tag" data-i18n="p6_tag">Automation & <10 Min Ads</span>
+            </div>
+            <h4 class="phase-title" data-i18n="p6_name">Advanced Flows</h4>
+            <p class="phase-sub" data-i18n="p6_sub">Speed up production with advanced workflows and automation.</p>
+            <p class="phase-desc" data-i18n="p6_desc">Deploy node-based pipelines, MagicFlow automations, and batch generation shortcuts to produce completed client-ready video ads in under 10 minutes.</p>
+            <ul class="phase-bullets">
+              <li data-i18n="p6_b1">Node-based workflow blueprints & visual logic</li>
+              <li data-i18n="p6_b2">Sub-10-minute commercial ad production sprint</li>
+              <li data-i18n="p6_b3">Batch keyframe & video generation shortcuts</li>
+            </ul>
+            <div class="phase-footer">
+              <span class="phase-tools-label">Tools:</span> Node Automation · MagicFlow · Fast Batching
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Milestone 3: Phases 7 to 9 -->
+      <div class="roadmap-milestone">
+        <div class="milestone-header">
+          <div class="milestone-badge-wrap">
+            <span class="milestone-tag tag-purple" data-i18n="stage3_tag">STAGE 03 · SCALE, CINEMA & CLONING</span>
+            <span class="milestone-phases">PHASE 07 – 09</span>
+          </div>
+          <h3 class="milestone-title" data-i18n="stage3_title">From Creator to Scalable Brand & Digital Twin</h3>
+          <p class="milestone-desc" data-i18n="stage3_desc">Phases 7 to 9: 12+ viral social formats, cinematic 3-act storytelling, and cloning your face & voice with HeyGen.</p>
+        </div>
+        <div class="phases-grid">
+          <!-- Phase 7 -->
+          <div class="phase-card">
+            <div class="phase-card-top">
+              <span class="phase-num" data-i18n="p7_num">PHASE 07</span>
+              <span class="phase-tag" data-i18n="p7_tag">Viral Formats & Growth</span>
+            </div>
+            <h4 class="phase-title" data-i18n="p7_name">Social Media</h4>
+            <p class="phase-sub" data-i18n="p7_sub">Turn your skills into repeatable social content.</p>
+            <p class="phase-desc" data-i18n="p7_desc">Deploy 12+ proven viral content formulas across TikTok, Instagram Reels, and YouTube Shorts. Structure high-retention 3-second hooks and repeatable series.</p>
+            <ul class="phase-bullets">
+              <li data-i18n="p7_b1">12+ battle-tested viral niche blueprints (POV, Miniatures)</li>
+              <li data-i18n="p7_b2">First 3-second hook engineering for high viewer retention</li>
+              <li data-i18n="p7_b3">Repeatable posting workflows without creative burnout</li>
+            </ul>
+            <div class="phase-footer">
+              <span class="phase-tools-label">Platforms:</span> TikTok · Reels · YouTube Shorts
+            </div>
+          </div>
+
+          <!-- Phase 8 -->
+          <div class="phase-card">
+            <div class="phase-card-top">
+              <span class="phase-num" data-i18n="p8_num">PHASE 08</span>
+              <span class="phase-tag" data-i18n="p8_tag">Cinematic Filmmaking</span>
+            </div>
+            <h4 class="phase-title" data-i18n="p8_name">AI Filmmaking</h4>
+            <p class="phase-sub" data-i18n="p8_sub">Storytelling, shot design and cinematic AI production.</p>
+            <p class="phase-desc" data-i18n="p8_desc">Direct cinematic AI short films with ChatGPT-driven 3-act storyboards, multi-scene visual continuity, expressive actor direction, and immersive Capcut soundscapes.</p>
+            <ul class="phase-bullets">
+              <li data-i18n="p8_b1">Narrative scriptwriting & second-by-second shot breakdowns</li>
+              <li data-i18n="p8_b2">Scene continuity: maintaining lighting, mood & environment</li>
+              <li data-i18n="p8_b3">Capcut audio post-production & cinematic sound design (SFX)</li>
+            </ul>
+            <div class="phase-footer">
+              <span class="phase-tools-label">Craft:</span> ChatGPT Storyboard · Capcut SFX
+            </div>
+          </div>
+
+          <!-- Phase 9 (Highlighted Climax) -->
+          <div class="phase-card highlighted">
+            <div class="phase-glow"></div>
+            <div class="phase-card-top">
+              <span class="phase-num" data-i18n="p9_num">PHASE 09</span>
+              <span class="phase-tag badge-blue" data-i18n="p9_tag">AI Twin & Voice Clone</span>
+            </div>
+            <h4 class="phase-title" data-i18n="p9_name">Cloning</h4>
+            <p class="phase-sub" data-i18n="p9_sub">Clone face, voice and create your own AI Twin.</p>
+            <p class="phase-desc" data-i18n="p9_desc">Clone your physical appearance and voice profile with HeyGen and ElevenLabs. Speak fluently in any language and automate personal brand videos without a camera.</p>
+            <ul class="phase-bullets">
+              <li data-i18n="p9_b1">High-fidelity digital twin creation with HeyGen</li>
+              <li data-i18n="p9_b2">Voice cloning & multi-language localization with ElevenLabs</li>
+              <li data-i18n="p9_b3">Hands-off content automation & personal brand scaling</li>
+            </ul>
+            <div class="phase-footer">
+              <span class="phase-tools-label">Tech:</span> HeyGen · ElevenLabs · Voice Cloning
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Roadmap Action Callout -->
+      <div class="roadmap-bottom-cta">
+        <div class="roadmap-cta-text">
+          <strong>Master all 9 Phases for only $9/month</strong> — lock in your founding rate for life today.
+        </div>
+        <a href="https://www.skool.com/zerotoai" target="_blank" rel="noopener" class="btn btn-primary btn-md">
+          Join Zero To AI on Skool <b>→</b>
+        </a>
+      </div>
+
     </div>
   </section>
 
@@ -2966,75 +3363,6 @@
   "director_critique": "Canister lighting and specular highlights are production-ready. Reduce camera velocity from 3.5 to 2.0 to give droplet physics natural weight. Approved for Commercial Portfolio!"
 }
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════
-       AUDIENCE BY MATURITY (3-TIER ROADMAP)
-  ═══════════════════════════════════════════════════ -->
-  <section class="audience-section" id="levels">
-    <div class="container">
-      <div class="text-center">
-        <div class="eyebrow mx-auto" data-i18n="aud_eyebrow">03 / TAILORED LEARNING PATH</div>
-        <h2 class="section-title" data-i18n="aud_title">Built for Every Level — From Day 1 Beginners to Full-Time Creators</h2>
-        <p class="section-desc mx-auto" data-i18n="aud_desc">No prior video editing, 3D modeling, or programming background needed. Our 9-Phase curriculum is split into three intuitive progression stages.</p>
-      </div>
-
-      <div class="audience-grid-3">
-        <!-- Level 1: Beginners -->
-        <div class="level-card">
-          <div class="level-video-wrap">
-            <span class="level-badge" data-i18n="aud_s1_tier">STAGE 01</span>
-            <video autoplay muted loop playsinline poster="assets/videos/level-1-poster.jpg" src="assets/videos/level-1.mp4"></video>
-          </div>
-          <div class="level-card-body">
-            <p class="level-num" data-i18n="aud_s1_stage">PHASE 1 – PHASE 3</p>
-            <h3 data-i18n="aud_s1_title">Complete Beginners (Zero to AI)</h3>
-            <p data-i18n="aud_s1_desc">Never generated an AI image or video before? We guide you step by step from workspace setup to prompt architecture, building your first AI Avatar, and producing your first 4K realistic visual.</p>
-            <div class="level-tags">
-              <span class="level-tag-item" data-i18n="aud_s1_t1">No prior experience required</span>
-              <span class="level-tag-item" data-i18n="aud_s1_t2">Build your first AI Avatar</span>
-              <span class="level-tag-item" data-i18n="aud_s1_t3">Generate realistic assets in Week 1</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Level 2: Intermediates / Creators -->
-        <div class="level-card">
-          <div class="level-video-wrap">
-            <span class="level-badge" data-i18n="aud_s2_tier">STAGE 02</span>
-            <video autoplay muted loop playsinline poster="assets/videos/level-2-poster.jpg" src="assets/videos/level-2.mp4"></video>
-          </div>
-          <div class="level-card-body">
-            <p class="level-num" data-i18n="aud_s2_stage">PHASE 4 – PHASE 6</p>
-            <h3 data-i18n-html="aud_s2_title">Creators & Short-Form Video Editors</h3>
-            <p data-i18n="aud_s2_desc">Frustrated by warped limbs and jittery videos? Master Kling 3.0 and Seedance 2.0, lock consistent character voices, produce commercial ads (Nike, BMW, Claymation), and build ads in under 10 minutes.</p>
-            <div class="level-tags">
-              <span class="level-tag-item" data-i18n="aud_s2_t1">Master Kling 3.0 & Seedance 2.0</span>
-              <span class="level-tag-item" data-i18n="aud_s2_t2">Produce commercial UGC video ads</span>
-              <span class="level-tag-item" data-i18n="aud_s2_t3">Deliver complete ads in < 10 mins</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Level 3: Advanced / Marketers -->
-        <div class="level-card">
-          <div class="level-video-wrap">
-            <span class="level-badge" data-i18n="aud_s3_tier">STAGE 03</span>
-            <video autoplay muted loop playsinline poster="assets/videos/level-3-poster.jpg" src="assets/videos/level-3.mp4"></video>
-          </div>
-          <div class="level-card-body">
-            <p class="level-num" data-i18n="aud_s3_stage">PHASE 7 – PHASE 9</p>
-            <h3 data-i18n-html="aud_s3_title">Viral Channel Builders & AI Clones</h3>
-            <p data-i18n="aud_s3_desc">Ready to scale your brand and monetize? Dive into 12+ viral content niches, short filmmaking storytelling with ChatGPT, and clone your own face & voice with HeyGen for hands-off production.</p>
-            <div class="level-tags">
-              <span class="level-tag-item" data-i18n="aud_s3_t1">12+ Proven viral niche templates</span>
-              <span class="level-tag-item" data-i18n="aud_s3_t2">AI short filmmaking & storytelling</span>
-              <span class="level-tag-item" data-i18n="aud_s3_t3">Full digital cloning with HeyGen</span>
             </div>
           </div>
         </div>
@@ -3287,7 +3615,7 @@
           </div>
         </div>
         <div class="vault-summary-right">
-          <a href="#pricing" class="btn btn-orange" data-i18n-html="vt_sum_btn">Unlock the Vault on Skool ($9/mo) <b>→</b></a>
+          <a href="https://www.skool.com/zerotoai" target="_blank" rel="noopener" class="btn btn-orange" data-i18n-html="vt_sum_btn">Unlock the Vault on Skool ($9/mo) <b>→</b></a>
         </div>
       </div>
     </div>
@@ -3307,7 +3635,7 @@
       <div class="pricing-card-wrap">
         <div class="pricing-card-glow"></div>
         <div class="pricing-card">
-          <div class="pricing-badge" data-i18n="pr_badge">FOUNDING MEMBER SPECIAL · $9/MONTH OR $55/YEAR</div>
+          <div class="pricing-badge" data-i18n="pr_badge">FOUNDING MEMBER SPECIAL · LOCK IN $9/MONTH FOR LIFE</div>
 
           <!-- Price Display -->
           <div class="pricing-price">
@@ -3341,7 +3669,7 @@
               <span data-i18n="pr_breakdown_total">Market Value of Equivalent Training: $497+</span>
               <span class="strike-val">$943+</span>
             </div>
-            <div class="contrast-final-call" data-i18n-html="pr_final_call">Your Founding Member Access: <span class="highlight-price">Only $9 / Month</span> (or $55 / Year)</div>
+            <div class="contrast-final-call" data-i18n-html="pr_final_call">Join today and <span class="highlight-price">lock in $9/month for life</span></div>
           </div>
 
           <ul class="pricing-checklist">
@@ -3371,7 +3699,7 @@
             </li>
           </ul>
 
-          <a href="https://zero-to-ai-skool-launch-os.patches-twirler-2upo.chatgpt.site/#apply" class="btn btn-primary btn-lg" style="width:100%;font-size:17px" data-i18n-html="pr_btn_cta">Join Zero To AI on Skool — Only $9/Mo <b>→</b></a>
+          <a href="https://www.skool.com/zerotoai" target="_blank" rel="noopener" class="btn btn-primary btn-lg" style="width:100%;font-size:17px" data-i18n-html="pr_btn_cta">Join Zero To AI on Skool — Only $9/Mo <b>→</b></a>
 
           <!-- Trust Badges -->
           <div class="pricing-trust-badges">
@@ -3385,7 +3713,7 @@
             </div>
             <div class="trust-badge-item">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-              <span data-i18n-html="pr_trust_3"><strong>Annual Discount Option:</strong> Choose the $55/year plan to lock in nearly 50% savings.</span>
+              <span data-i18n-html="pr_trust_3"><strong>Lock in $9/mo for life:</strong> Your $9/month founding rate is locked forever as long as your membership is active.</span>
             </div>
           </div>
         </div>
@@ -3420,7 +3748,7 @@
             <span data-i18n="faq_q2">Is the $9 price a monthly subscription or a one-time fee?</span>
             <span class="chevron">▼</span>
           </div>
-          <div class="faq-answer" data-i18n="faq_a2">It is an affordable Founding Member monthly subscription at $9/month (or $55/year for greater savings). You can cancel anytime directly inside Skool with a single click. Furthermore, by actively participating and completing assignments, you can climb our community leaderboard to Level 8 (Grandmaster) and earn 100% FREE LIFETIME MEMBERSHIP!</div>
+          <div class="faq-answer" data-i18n="faq_a2">It is an affordable Founding Member monthly subscription at just $9/month — join today and lock in $9/month for life. You can cancel anytime directly inside Skool with a single click. Furthermore, by actively participating and completing assignments, you can climb our community leaderboard to Level 8 (Grandmaster) and earn 100% FREE LIFETIME MEMBERSHIP!</div>
         </div>
 
         <!-- FAQ 3 -->
@@ -3462,7 +3790,7 @@
         <div class="eyebrow mx-auto" style="color:var(--signal-orange)" data-i18n="final_eyebrow">FOUNDING MEMBER ACCESS · ONLY $9/MO</div>
         <h2 data-i18n-html="final_title">Stop struggling on your own.<br />Start producing commercial AI assets today.</h2>
         <p data-i18n="final_desc">For just $9/month (less than two cups of coffee), unlock the entire 9-Phase curriculum, battle-tested prompt vaults, and join an ambitious creator community led by Vmiz Nguyen.</p>
-        <a href="https://zero-to-ai-skool-launch-os.patches-twirler-2upo.chatgpt.site/#apply" class="btn btn-orange btn-lg" data-i18n-html="final_cta_btn">Join Zero To AI on Skool — Only $9/Mo <b>→</b></a>
+        <a href="https://www.skool.com/zerotoai" target="_blank" rel="noopener" class="btn btn-orange btn-lg" data-i18n-html="final_cta_btn">Join Zero To AI on Skool — Only $9/Mo <b>→</b></a>
         <div style="margin-top: 18px; font-size: 13px; color: var(--fg-subtle);" data-i18n="final_trust_note">⚡ Instant Skool Access · Cancel Anytime · Zero Hidden Fees</div>
       </div>
     </div>
@@ -3496,7 +3824,7 @@
         <div>
           <div class="footer-col-title" data-i18n="footer_col_standards">Transparency & Help</div>
           <ul class="footer-links">
-            <li><a href="https://zero-to-ai-skool-launch-os.patches-twirler-2upo.chatgpt.site/#guardrails" target="_blank" rel="noopener" data-i18n="footer_link_guidelines">Community Guidelines</a></li>
+            <li><a href="https://www.skool.com/zerotoai" target="_blank" rel="noopener" data-i18n="footer_link_guidelines">Community Guidelines</a></li>
             <li><a href="#faq" data-i18n="footer_link_guardrails">Transparency Promise</a></li>
             <li><a href="#faq" data-i18n="footer_link_refund">Cancellation Policy</a></li>
             <li><a href="#faq" data-i18n="footer_link_tos">Terms of Service</a></li>
@@ -3506,7 +3834,7 @@
         <div>
           <div class="footer-col-title" data-i18n="footer_col_ecosystem">Skool Community</div>
           <ul class="footer-links">
-            <li><a href="#pricing" data-i18n="footer_link_community">Zero To AI Skool Community</a></li>
+            <li><a href="https://www.skool.com/zerotoai" target="_blank" rel="noopener" data-i18n="footer_link_community">Zero To AI Skool Community</a></li>
             <li><a href="#ecosystem" data-i18n="footer_link_sprints">Weekly Sprints & Leaderboard</a></li>
             <li><a href="#pricing" data-i18n="footer_link_pass">Founding Member Pass ($9/mo)</a></li>
           </ul>
