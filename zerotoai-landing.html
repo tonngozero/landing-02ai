@@ -2084,6 +2084,39 @@
       background: linear-gradient(90deg, transparent, var(--signal-orange), transparent);
       box-shadow: 0 0 14px var(--signal-orange);
     }
+    .phase-card-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 18px;
+      border: 1px solid var(--surface-border);
+      background: #040810;
+    }
+    .phase-card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .phase-card:hover .phase-card-thumb img {
+      transform: scale(1.05);
+    }
+    .phase-thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(4, 8, 16, 0) 55%, rgba(4, 8, 16, 0.6) 100%);
+      pointer-events: none;
+    }
+    .phase-card.highlighted .phase-card-thumb {
+      border-color: rgba(0, 120, 255, 0.35);
+    }
+    .phase-card.highlight-orange .phase-card-thumb {
+      border-color: rgba(255, 149, 0, 0.35);
+    }
     .phase-card-top {
       display: flex;
       align-items: center;
@@ -3013,6 +3046,10 @@
         <div class="phases-grid">
           <!-- Phase 1 -->
           <div class="phase-card">
+            <div class="phase-card-thumb">
+              <img src="assets/phases/phase-01-initiate.jpg" alt="Phase 01: Initiate - Creative Workspace & Tool Setup" loading="lazy" width="640" height="360" />
+              <div class="phase-thumb-overlay"></div>
+            </div>
             <div class="phase-card-top">
               <span class="phase-num" data-i18n="p1_num">PHASE 01</span>
               <span class="phase-tag" data-i18n="p1_tag">Setup & Workflow</span>
@@ -3032,6 +3069,10 @@
 
           <!-- Phase 2 -->
           <div class="phase-card">
+            <div class="phase-card-thumb">
+              <img src="assets/phases/phase-02-foundations.jpg" alt="Phase 02: AI Foundations - Optical Physics & Prompt Mastery" loading="lazy" width="640" height="360" />
+              <div class="phase-thumb-overlay"></div>
+            </div>
             <div class="phase-card-top">
               <span class="phase-num" data-i18n="p2_num">PHASE 02</span>
               <span class="phase-tag" data-i18n="p2_tag">Prompt Mastery</span>
@@ -3052,6 +3093,10 @@
           <!-- Phase 3 (Highlighted Breakthrough) -->
           <div class="phase-card highlighted">
             <div class="phase-glow"></div>
+            <div class="phase-card-thumb">
+              <img src="assets/phases/phase-03-images.jpg" alt="Phase 03: AI Images - Photorealism, Identity & AI KOLs" loading="lazy" width="640" height="360" />
+              <div class="phase-thumb-overlay"></div>
+            </div>
             <div class="phase-card-top">
               <span class="phase-num" data-i18n="p3_num">PHASE 03</span>
               <span class="phase-tag badge-blue" data-i18n="p3_tag">Photorealism & Identity</span>
@@ -3084,6 +3129,10 @@
         <div class="phases-grid">
           <!-- Phase 4 -->
           <div class="phase-card">
+            <div class="phase-card-thumb">
+              <img src="assets/phases/phase-04-videos.jpg" alt="Phase 04: AI Videos - Fluid Motion & Camera Trajectory" loading="lazy" width="640" height="360" />
+              <div class="phase-thumb-overlay"></div>
+            </div>
             <div class="phase-card-top">
               <span class="phase-num" data-i18n="p4_num">PHASE 04</span>
               <span class="phase-tag" data-i18n="p4_tag">Fluid Motion & Lipsync</span>
@@ -3104,6 +3153,10 @@
           <!-- Phase 5 (Highlighted Commercial Value) -->
           <div class="phase-card highlighted highlight-orange">
             <div class="phase-glow glow-orange"></div>
+            <div class="phase-card-thumb">
+              <img src="assets/phases/phase-05-adverts.jpg" alt="Phase 05: AI Adverts & UGC - 4K Commercial Brand Spots" loading="lazy" width="640" height="360" />
+              <div class="phase-thumb-overlay"></div>
+            </div>
             <div class="phase-card-top">
               <span class="phase-num num-orange" data-i18n="p5_num">PHASE 05</span>
               <span class="phase-tag badge-orange" data-i18n="p5_tag">Commercial Ads & UGC</span>
@@ -3123,6 +3176,10 @@
 
           <!-- Phase 6 -->
           <div class="phase-card">
+            <div class="phase-card-thumb">
+              <img src="assets/phases/phase-06-flows.jpg" alt="Phase 06: Advanced Flows - Automation & Node Pipelines" loading="lazy" width="640" height="360" />
+              <div class="phase-thumb-overlay"></div>
+            </div>
             <div class="phase-card-top">
               <span class="phase-num" data-i18n="p6_num">PHASE 06</span>
               <span class="phase-tag" data-i18n="p6_tag">Automation & <10 Min Ads</span>
@@ -3155,6 +3212,10 @@
         <div class="phases-grid">
           <!-- Phase 7 -->
           <div class="phase-card">
+            <div class="phase-card-thumb">
+              <img src="assets/phases/phase-07-social.jpg" alt="Phase 07: Social Media - Viral Formats & Growth" loading="lazy" width="640" height="360" />
+              <div class="phase-thumb-overlay"></div>
+            </div>
             <div class="phase-card-top">
               <span class="phase-num" data-i18n="p7_num">PHASE 07</span>
               <span class="phase-tag" data-i18n="p7_tag">Viral Formats & Growth</span>
@@ -3174,6 +3235,10 @@
 
           <!-- Phase 8 -->
           <div class="phase-card">
+            <div class="phase-card-thumb">
+              <img src="assets/phases/phase-08-filmmaking.jpg" alt="Phase 08: AI Filmmaking - Storytelling & Cinematic SFX" loading="lazy" width="640" height="360" />
+              <div class="phase-thumb-overlay"></div>
+            </div>
             <div class="phase-card-top">
               <span class="phase-num" data-i18n="p8_num">PHASE 08</span>
               <span class="phase-tag" data-i18n="p8_tag">Cinematic Filmmaking</span>
@@ -3194,6 +3259,10 @@
           <!-- Phase 9 (Highlighted Climax) -->
           <div class="phase-card highlighted">
             <div class="phase-glow"></div>
+            <div class="phase-card-thumb">
+              <img src="assets/phases/phase-09-cloning.jpg" alt="Phase 09: Cloning - AI Digital Twin & Voice Clone" loading="lazy" width="640" height="360" />
+              <div class="phase-thumb-overlay"></div>
+            </div>
             <div class="phase-card-top">
               <span class="phase-num" data-i18n="p9_num">PHASE 09</span>
               <span class="phase-tag badge-blue" data-i18n="p9_tag">AI Twin & Voice Clone</span>
