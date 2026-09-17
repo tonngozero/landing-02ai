@@ -110,15 +110,17 @@ def convert_phases():
 def convert_video_posters():
     """
     assets/videos/*-poster.jpg -> .webp versions (quality=84)
-    (hero-poster.jpg, level-1-poster.jpg, level-2-poster.jpg, level-3-poster.jpg, skool1-poster.jpg)
+    (hero-poster.jpg, level-1-new-poster.jpg, level-2-poster.jpg, level-3-poster.jpg, skool1-poster.jpg)
     """
     results = []
     posters = [
         'hero-poster.jpg',
-        'level-1-poster.jpg',
+        'level-1-new-poster.jpg',
         'level-2-poster.jpg',
         'level-3-poster.jpg',
-        'skool1-poster.jpg'
+        'skool1-poster.jpg',
+        'video_landing1-poster.jpg',
+        'video_landing2-poster.jpg'
     ]
     for p in posters:
         src = os.path.join(VIDEOS_DIR, p)
